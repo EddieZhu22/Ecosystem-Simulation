@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - food
+  - death
+  - correct
+  - creature
+  - manager
+  - p1
+  - p2
+  - p3
+  - p4
+  - p5
+  - leg
+  - torso
+  - head
+  - Leg 1
+  - Leg 2
+  - mt
+  - ar
+  - Head 1
+  - Head 2
+  - Head 3
+  - Neck 1
+  - Neck 2
+  - Neck 3
+  - Neck 4
+  - Leg 3
+  - Head 4
+  - Head 5
+  - edleg
+  - prey
+  - predator
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Collectible
+  - Water
+  - UI
+  - Creatures and Enviromemt
+  - Ground
+  - PP
+  - Icon
+  - Seed
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

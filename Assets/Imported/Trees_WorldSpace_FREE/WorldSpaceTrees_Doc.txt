@@ -1,0 +1,22 @@
+Thank you for downloading World Space Trees (Free version)
+
+This system allows for variation based on placement via the shader.
+With world space enable it will switch the texture quadrant of the leafs to an
+adjacent one based on its position fraction.
+
+You can toggle this feature in the materials.
+
+New features (March 5th, 2019)
+
+Better translucency control
+Sun Down control (makes the colors darker based on the light position, great for day/night cycles)
+
+Refined parameters.
+
+Switched out the old shaders as they were created with Shader Forge and some features were not being supported.
+
+When making your own textures, move them to each quadrant with the normal and translucency maps lined up.
+
+Several versions and a demo video have been made, link on the Asset store page for this product.
+
+Full version will have more updates and textures, if you want to support this pack to grow futher, please purchase it here: https://assetstore.unity.com/packages/tools/world-space-trees-142096

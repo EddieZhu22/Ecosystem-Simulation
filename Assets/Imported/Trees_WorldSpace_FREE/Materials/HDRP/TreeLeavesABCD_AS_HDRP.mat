@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TreeLeavesABCD_AS_HDRP
+  m_Shader: {fileID: 4800000, guid: 46c512628cf462e4ea6760fcdc89f889, type: 3}
+  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY _ALPHATEST_ON _SWITCHCOLUMN_ON _SWITCHROW_ON
+    _WORLDSPACEOFFSET1_ON _WORLDSPACEOFFSET_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+    RenderType: TransparentCutout
+  disabledShaderPasses:
+  - TransparentBackface
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Albedo_MaskA:
+        m_Texture: {fileID: 2800000, guid: c92c8f39af8b6fc48b95b267a0c083a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo_MaskA1:
+        m_Texture: {fileID: 2800000, guid: c92c8f39af8b6fc48b95b267a0c083a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MotionPowerWeightMask:
+        m_Texture: {fileID: 2800000, guid: 53572511f4383b843a0bbbcbfe0466bf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MotionPowerWeightMask1:
+        m_Texture: {fileID: 2800000, guid: 53572511f4383b843a0bbbcbfe0466bf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: f944269a9234a224b97667207cf596c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap1:
+        m_Texture: {fileID: 2800000, guid: f944269a9234a224b97667207cf596c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecColorGloss:
+        m_Texture: {fileID: 2800000, guid: c92c8f39af8b6fc48b95b267a0c083a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TranslucencyMap:
+        m_Texture: {fileID: 2800000, guid: c74914b5e72b0c0469ab52085cb6c6b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TranslucencyMap1:
+        m_Texture: {fileID: 2800000, guid: c74914b5e72b0c0469ab52085cb6c6b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffEnable: 1
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _BlendMode: 0
+    - _BumpScale: 1
+    - _ClipThreshold: 0.38
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _CustomColorAmount1: 0
+    - _Cutoff: 0.5
+    - _DarknessOnSundown: 1
+    - _DarknessOnSundown1: 0.631
+    - _DesaturateTranslucency: 0.244
+    - _DesaturateTranslucency1: 0.61
+    - _DetailNormalMapScale: 1
+    - _Diffusion: 3.5648174
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EnableFogOnTransparent: 1
+    - _Gloss: 0.31
+    - _Gloss1: 0.2
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _MotionRange: 2.25
+    - _MotionRange1: 0.5
+    - _MotionSpeed: 2.99
+    - _MotionSpeed1: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _ReceivesSSR: 1
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 1
+    - _SelfIllum: 0.136
+    - _SelfIllum1: 0.122
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _StencilRef: 1
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 64
+    - _StencilRefGBuffer: 1
+    - _StencilRefMV: 128
+    - _StencilWriteMask: 3
+    - _StencilWriteMaskDepth: 48
+    - _StencilWriteMaskDistortionVec: 64
+    - _StencilWriteMaskGBuffer: 51
+    - _StencilWriteMaskMV: 176
+    - _SurfaceType: 0
+    - _SwitchColumn: 1
+    - _SwitchColumn1: 0
+    - _SwitchRow: 1
+    - _SwitchRow1: 0
+    - _TessEdgeLength: 16
+    - _TessMax: 25
+    - _TessMaxDisp: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 16
+    - _TransAmbient: 0
+    - _TransDirect: 0.418
+    - _TransNormalDistortion: 0.464
+    - _TransScattering: 8.3
+    - _TransShadow: 0.969
+    - _Translucency: 0.33
+    - _TranslucencyPower: 0.57
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentZWrite: 1
+    - _TraslucencyBoost: 1.64
+    - _UVSec: 0
+    - _UseShadowThreshold: 0
+    - _WorldSpaceOffset: 1
+    - _WorldSpaceOffset1: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 3
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CustomColorHigh1: {r: 0.5528651, g: 0.875, b: 0.4503677, a: 0}
+    - _CustomColorLow1: {r: 0.13624567, g: 0.33088237, b: 0.13758796, a: 0}
+    - _Diffusion_asset: {r: 2.2888926e+38, g: 1.2389358e-26, b: 7.69327e-37, a: 0.00018220427}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 0}
+    - _SpecularColour: {r: 0.31617647, g: 0.19528547, b: 0.19528547, a: 0}
+    - _SpecularTone: {r: 0.05882353, g: 0.0566609, b: 0.0566609, a: 0}
+    - _SpecularTone1: {r: 0.058823504, g: 0.056660876, b: 0.056660876, a: 0}
