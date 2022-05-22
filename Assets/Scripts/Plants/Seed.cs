@@ -92,7 +92,7 @@ public class Seed : MonoBehaviour
                 if (database.GetComponent<TreeDB>().genes[i, k] == genes[k])
                 {
                     num++;
-                    Debug.Log(num);
+                    //Debug.Log(num);
                 }
             }
             if (num >= 14)

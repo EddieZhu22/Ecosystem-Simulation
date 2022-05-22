@@ -1,0 +1,50 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Template name="Toolbar" src="Toolbar.uxml" />
+    <ui:Instance template="Toolbar" name="Toolbar" />
+    <ui:VisualElement style="padding-left: 60px;&#10;padding-right: 0;&#10;justify-content: space-between;&#10;flex-direction: row;&#10;">
+        <Style src="Find Errors.uss" />
+        <ui:VisualElement name="Check Content" style="padding-left: 0;&#10;padding-right: 0;&#10;flex-direction: row;&#10;justify-content: flex-start;&#10;flex-grow: 1;&#10;">
+            <ui:VisualElement class="check-column" style="align-items: flex-start;&#10;">
+                <ui:Label text="Unity Version" class="check-title" />
+                <ui:Label text="URP Version" class="check-title" />
+                <ui:Label text="Active Pipeline" class="check-title" />
+                <ui:Label text="Depth Texture" class="check-title" />
+                <ui:Label text="Opaque Texture" class="check-title" />
+                <ui:Label text="Graphics API" class="check-title" />
+                <ui:Label text="Planar Reflections" class="check-title" />
+            </ui:VisualElement>
+            <ui:VisualElement class="check-column" style="align-items: flex-end;&#10;flex-grow: 1;&#10;">
+                <ui:Label text="Not Tested" name="Unity Version" class="check-status" style="justify-content: flex-start;&#10;" />
+                <ui:Label text="Package not found" name="URP_Version" class="check-status" />
+                <ui:Label text="Supported" name="Active Renderer" class="check-status" />
+                <ui:Label text="Generated" name="Depth Texture" class="check-status" />
+                <ui:Label text="Not Generated" name="Opaque Texture" class="check-status" />
+                <ui:Label text="Not Tested" name="Graphics_API" class="check-status" />
+                <ui:Label text="Not Tested" name="Planar_Reflections" class="check-status" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Check Content" style="padding-left: 0;&#10;padding-right: 0;&#10;flex-direction: row;&#10;margin-left: 0;&#10;justify-content: flex-end;&#10;">
+            <ui:VisualElement class="check-column" style="padding-right: 0;&#10;align-items: flex-start;&#10;">
+                <ui:VisualElement name="Unity Version Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+                <ui:VisualElement name="URP Version Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+                <ui:VisualElement name="Active Renderer Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+                <ui:VisualElement name="Depth Texture Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+                <ui:VisualElement name="Opaque Texture Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+                <ui:VisualElement name="Graphics_API_Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+                <ui:VisualElement name="Planar_Reflections_Icon" class="check-icon" style="background-image: resource(&apos;Icons/Neutral&apos;);&#10;" />
+            </ui:VisualElement>
+            <ui:VisualElement class="check-column" style="align-items: flex-start;&#10;padding-right: 0;&#10;justify-content: flex-start;&#10;">
+                <ui:Button text="Fix" name="Unity Version Fix" class="fix-button" style="flex-shrink: 1;&#10;align-items: flex-start;&#10;border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+                <ui:Button text="Install" name="URP_version_fix" class="fix-button" style="border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+                <ui:Button text="Fix" name="Active Renderer Fix" class="fix-button" style="border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-bottom-right-radius: 3px;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+                <ui:Button text="Fix" name="Depth Texture Fix" class="fix-button" style="border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+                <ui:Button text="Fix" name="Opaque Texture Fix" class="fix-button" style="border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+                <ui:Button text="Fix" name="Graphics_API_Fix" class="fix-button" style="border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+                <ui:Button text="Fix" name="Planar_Reflections_Fix" class="fix-button" style="border-left-width: 0;&#10;border-right-width: 0;&#10;border-bottom-width: 0;&#10;border-top-left-radius: 3px;&#10;border-top-right-radius: 3px;&#10;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Button text="Detect" name="Check" style="margin-left: 120px;&#10;margin-right: 120px;&#10;margin-top: 25px;&#10;">
+        <Style src="Find Errors.uss" />
+    </ui:Button>
+</ui:UXML>

@@ -1,14 +1,14 @@
-﻿Shader "Custom/Terrain" {
+﻿Shader "Unlit/Terrain" {
 	Properties {
 		testTexture("Texture", 2D) = "white"{}
-		testScale("Scale", Float) = 1
+		testScale("Scale", float) = 1
 
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 		LOD 200
 		
-		CGPROGRAM
+		HLSLPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
 		#pragma surface surf Standard fullforwardshadows
 
@@ -68,7 +68,7 @@
 		}
 
 
-		ENDCG
+		ENDHLSL
 	}
 	FallBack "Diffuse"
 }

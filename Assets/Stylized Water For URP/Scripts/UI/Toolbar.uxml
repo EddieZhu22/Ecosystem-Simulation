@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Title" style="justify-content: center;&#10;align-items: center;&#10;margin-left: 20px;&#10;margin-right: 20px;&#10;margin-top: 20px;&#10;margin-bottom: 20px;&#10;flex-direction: row;&#10;">
+        <Style src="Toolbar.uss" />
+        <ui:VisualElement name="Icon" class="support-section-button-icon button-icon" style="background-image: resource(&apos;Icons/StylizedWaterURP&apos;);&#10;width: 20px;&#10;height: 20px;&#10;margin-right: 5px;&#10;" />
+        <ui:Label text="Stylized Water For URP" style="-unity-font-style: bold;&#10;margin-left: 5px;&#10;font-size: 20px;&#10;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Toolbar" style="flex-direction: row;&#10;align-items: center;&#10;flex-grow: 0;&#10;flex-shrink: 1;&#10;-unity-text-align: upper-left;&#10;justify-content: center;&#10;margin-top: 0;&#10;margin-bottom: 30px;&#10;visibility: visible;&#10;display: flex;&#10;">
+        <Style src="Toolbar.uss" />
+        <ui:Button text="Configure" name="ConfigureButton" tabindex="0" usage-hints="None" style="margin-left: 0;&#10;margin-right: 0;&#10;padding-left: 8px;&#10;padding-right: 8px;&#10;border-top-left-radius: 3px;&#10;border-bottom-left-radius: 3px;&#10;border-top-right-radius: 0;&#10;border-bottom-right-radius: 0;&#10;padding-top: 4px;&#10;padding-bottom: 4px;&#10;border-right-width: 0;&#10;" />
+        <ui:Button text="About" name="AboutButton" tabindex="0" usage-hints="None" style="margin-left: 0;&#10;margin-right: 0;&#10;padding-left: 8px;&#10;padding-right: 8px;&#10;border-top-left-radius: 0;&#10;border-bottom-left-radius: 0;&#10;border-top-right-radius: 0;&#10;border-bottom-right-radius: 0;&#10;padding-top: 4px;&#10;padding-bottom: 4px;&#10;border-right-width: 0;&#10;" />
+        <ui:Button text="Acknowledgements" name="AcknowledgementsButton" tabindex="0" usage-hints="None" style="margin-left: 0;&#10;margin-right: 0;&#10;padding-left: 8px;&#10;padding-right: 8px;&#10;border-top-left-radius: 0;&#10;border-bottom-left-radius: 0;&#10;border-top-right-radius: 0;&#10;border-bottom-right-radius: 0;&#10;padding-top: 4px;&#10;padding-bottom: 4px;&#10;border-right-width: 0;&#10;" />
+        <ui:Button text="Support" name="SupportButton" style="padding-left: 8px;&#10;margin-left: 0;&#10;border-top-left-radius: 0;&#10;border-bottom-left-radius: 0;&#10;padding-right: 8px;&#10;padding-top: 4px;&#10;padding-bottom: 4px;&#10;margin-right: 0;&#10;" />
+    </ui:VisualElement>
+</ui:UXML>

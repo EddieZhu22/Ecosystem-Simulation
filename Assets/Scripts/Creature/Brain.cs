@@ -67,7 +67,7 @@ public class Brain : MonoBehaviour
         }
         if (time == null)
             time = GameObject.Find("GameManager").GetComponent<TimeManager>();
-        if (time.year == 0)
+        if (time.day == 0)
         {
             SetGenes();
         }

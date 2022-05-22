@@ -22,24 +22,29 @@ public class GameUI : MonoBehaviour
 
     public Text avgData, StrengthLabel, ChanceLabel, EyesLabel, LegsLabel, TorsoLabel;
 
+    public Animator anim;
     public GameObject pause, play, terrain, transitionObject, editorSettings, editorSettings2, mainSettings, SlotSprite, InspectorSettings;
     public GameManager manager;
     public CreatureEditor editor;
     public PlantEditor editor2;
-    public bool isPlay, isTransition, vacant, vacant2, spawned, spawned2;
+
+    public bool isPlay, isTransition, vacant, vacant2, spawned, spawned2, isCollapsed;
 
     public Sprite[] Icons, Icons2;
     public TMP_Text Stats, Stats2;
+
     public GameObject[] Slots, Slots2;
     private GameObject[] creatures, enviroment;
+
     public int scene, selected, selected2, num, num2;
+
     public Camera cam1, cam2, cam3, IconCam, IconCam2;
     private void Start()
     {
         //GameManager = GameObject.Find("GameManager");
         editorSettings.SetActive(false);
         mainSettings.SetActive(true);
-        GameSpeed.value = 0f;
+        GameSpeed.value = 1f;
         currSpeed = 1;
         cam1.enabled = true;
         cam2.enabled = false;
@@ -48,7 +53,27 @@ public class GameUI : MonoBehaviour
     }
     void Update()
     {
+
         manager.Gamespeed = GameSpeed.value;
+
+        Spawn();
+        checkScene();
+    }
+
+    public void Collapse()
+    {
+        isCollapsed = (isCollapsed == true) ? isCollapsed = false : isCollapsed = true;
+        if (isCollapsed)
+        {
+            anim.SetBool("Collapsed", true);
+        }
+        else
+        {
+            anim.SetBool("Collapsed", false);
+        }
+    }
+    private void Spawn()
+    {
         if (spawned == true)
         {
             if (num <= int.Parse(numOfPlants.text))
@@ -73,6 +98,9 @@ public class GameUI : MonoBehaviour
                 spawned2 = false;
             }
         }
+    }
+    private void checkScene()
+    {
         if (scene == 0)
         {
             if (mainDropDown.value == 1 || mainDropDown.value == 2)
@@ -118,7 +146,7 @@ public class GameUI : MonoBehaviour
         {
             SlotSprite.SetActive(false);
         }
-        if(scene == 3)
+        if (scene == 3)
         {
             InspectorSettings.SetActive(true);
             editorSettings.SetActive(false);
@@ -127,13 +155,13 @@ public class GameUI : MonoBehaviour
         }
         if (scene == 0)
         {
-            InspectorSettings.SetActive(false);
-            editorSettings.SetActive(false);
-            mainSettings.SetActive(true);
-            editorSettings2.SetActive(false);
-            cam1.enabled = true;
-            cam2.enabled = false;
-            cam3.enabled = false;
+            //InspectorSettings.SetActive(false);
+            //editorSettings.SetActive(false);
+            //mainSettings.SetActive(true);
+            //editorSettings2.SetActive(false);
+            //cam1.enabled = true;
+            //cam2.enabled = false;
+            //cam3.enabled = false;
         }
     }
     public void GeneratePlants()
@@ -175,22 +203,22 @@ public class GameUI : MonoBehaviour
         pause.SetActive(false);
         play.SetActive(true);
     }
-    public void ValueChangeCheck()
+    private void ValueChangeCheck()
     {
 
     }
     public void EnterCreatureEditor()
     {
-        scene = 1;
         StartCoroutine(transition());
+        scene = 1;
         //Debug.Log("success");
     }
     public void ExitcCreatureEditor()
     {
         Icons[selected] = IconCam.gameObject.GetComponent<CreateIcons>().CaptureScreen();
         Slots[selected].gameObject.transform.parent.gameObject.GetComponent<Image>().sprite = Icons[selected];
-        scene = 0;
         editor.SetDetails();
+        scene = 0;
         StartCoroutine(transition());
         //Debug.Log("success");
     }
@@ -209,7 +237,7 @@ public class GameUI : MonoBehaviour
         StartCoroutine(transition());
         //Debug.Log("success");
     }
-    private IEnumerator transition()
+    public IEnumerator transition()
     {
         pauseSim();
         isTransition = true;
@@ -239,7 +267,7 @@ public class GameUI : MonoBehaviour
         }
         if (scene == 0)
         {
-
+            GameSpeed.value = 1f;
             editorSettings.SetActive(false);
             mainSettings.SetActive(true);
             editorSettings2.SetActive(false);
@@ -251,7 +279,7 @@ public class GameUI : MonoBehaviour
         yield return new WaitForSeconds(1f);
         transitionObject.GetComponent<Animator>().SetBool("transition", false);
     }
-    private void SideMenu()
+    public void SideMenu()
     {
         if (mainDropDown.value == 0)
         {
@@ -318,7 +346,9 @@ public class GameUI : MonoBehaviour
             replace2.interactable = true;
         }
     }
+
     // UNUSED
+
     public void SetAllInactive()
     {
         creatures = GameObject.FindGameObjectsWithTag("creature");

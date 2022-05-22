@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: 7b2c7c5768abb4a2fa8c32c913fdce40
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkGlass
+    second: {fileID: 2100000, guid: 11b99dea9ff6d4b4ca0ec0a11fbd4a50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emissive
+    second: {fileID: 2100000, guid: b07767c4ecb3a42dd9f8357e6c8a18c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 5e58347dbdb6a4114a134fdd419d03cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 6955d5f32b67345b28d033793b3a3036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NuclearPowerPlant-Black-Mat
+    second: {fileID: 2100000, guid: f3e957a4a6ca9483bb0bea52575c0e34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NuclearPowerPlant-DarkGlass-Mat
+    second: {fileID: 2100000, guid: 11b99dea9ff6d4b4ca0ec0a11fbd4a50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NuclearPowerPlant-Emissive-Mat
+    second: {fileID: 2100000, guid: b07767c4ecb3a42dd9f8357e6c8a18c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NuclearPowerPlant-Glass-Mat
+    second: {fileID: 2100000, guid: 5e58347dbdb6a4114a134fdd419d03cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NuclearPowerPlant-Green-Mat
+    second: {fileID: 2100000, guid: 469d47e3c938f44ba95eccfa3d4f4759, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NuclearPowerPlant-Metal-Mat
+    second: {fileID: 2100000, guid: 6955d5f32b67345b28d033793b3a3036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Primary
+    second: {fileID: 2100000, guid: 469d47e3c938f44ba95eccfa3d4f4759, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StreetLight2-Emissive
+    second: {fileID: 2100000, guid: dce1d9b29f7c74ca0ba8dedeb7158fb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StreetLight2-Metal
+    second: {fileID: 2100000, guid: 13ffa521930cb492dac11f4563eebef0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Bumper-Back
+    second: {fileID: 2100000, guid: e53c7cdd7cfa8423ca864685ea16ecc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin
+    second: {fileID: 2100000, guid: fe8ea02f1a556452294725e84a3aa1ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Bumper
+    second: {fileID: 2100000, guid: 1f6c8eb5a7fac4ad782857020c95264c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-DoorHandle
+    second: {fileID: 2100000, guid: bc98a7cc7c3c84b5e9441035f50be493, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Grill
+    second: {fileID: 2100000, guid: 6109afa248aa949c3bf730bf500482da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-HandleBars
+    second: {fileID: 2100000, guid: 317e806346953499f8f0dbd7fd5751f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Headlights
+    second: {fileID: 2100000, guid: 5401c3d3d6b7e49d68669841d6b10e92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Headlights-Emissive
+    second: {fileID: 2100000, guid: 8cbe7d33513ce4db3b17eb9e0f3e670b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Headlights-Indicators
+    second: {fileID: 2100000, guid: 59a17e722535c46ad8f897b032e14eb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Headlights-Indicators-Emissive
+    second: {fileID: 2100000, guid: 8d758d27da69741249c7bd1e40acdc23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Indicator
+    second: {fileID: 2100000, guid: a7fe52fa029a94d929a60abe1dc3ad8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Indicator-Emissive
+    second: {fileID: 2100000, guid: 36b1c5f471e294cc6b86d5164240f1ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-LicensePlate
+    second: {fileID: 2100000, guid: fc13b50e54a714c39b3bbc839a0047a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Logo
+    second: {fileID: 2100000, guid: 6939f0fba700e470ca557d436a26595f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Numberplate
+    second: {fileID: 2100000, guid: fc13b50e54a714c39b3bbc839a0047a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-SideMirrors
+    second: {fileID: 2100000, guid: eb7ea43ce19f04f0f9e0718dad6aa747, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-SideMirrors-Mirror
+    second: {fileID: 2100000, guid: f0d4889eb14374a2e8d7b11a193d9d6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-TailLights-Emissive
+    second: {fileID: 2100000, guid: b0faea874b0bb4d3f873195ebd886738, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Windows
+    second: {fileID: 2100000, guid: 7a268b66f33be442fab3c760cf34306e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cabin-Wipers
+    second: {fileID: 2100000, guid: 214ba350bded44ab4833b9f40c2cf571, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cargohold
+    second: {fileID: 2100000, guid: 6669488a067944b58a732483d1ee0c77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Cargohold-Metal
+    second: {fileID: 2100000, guid: c4424d12254ee41aab07316e4ae08fd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-FuelResevoir-Metal
+    second: {fileID: 2100000, guid: 8a115e91506ed47e69f6d6550ec8a972, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Fuelresevoir-Tank
+    second: {fileID: 2100000, guid: 57d087ce8c46e48c193e7c681b95c1d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Headlights-Emissive
+    second: {fileID: 2100000, guid: 8cbe7d33513ce4db3b17eb9e0f3e670b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-LicensePlate-Back
+    second: {fileID: 2100000, guid: a5e2f0a4f348644dd915f256c3ac5536, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-LicensePlate-Back-Plate
+    second: {fileID: 2100000, guid: cbed14b789fc84904b872d4d46a5e2a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-TailLights
+    second: {fileID: 2100000, guid: 2cce644a115d841439be0b4d8088678a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-TailLights-Emissive
+    second: {fileID: 2100000, guid: b0faea874b0bb4d3f873195ebd886738, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Tire
+    second: {fileID: 2100000, guid: eb7ea43ce19f04f0f9e0718dad6aa747, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Wheel-Cap
+    second: {fileID: 2100000, guid: 1f122a7d1b7c84dc3b2b9f095d27b04b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Wheel-Fender
+    second: {fileID: 2100000, guid: bd9a97934d8f14289b11f40d998be6b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TruckBasic-Wheel-Tire
+    second: {fileID: 2100000, guid: eb7ea43ce19f04f0f9e0718dad6aa747, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 1
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -20,7 +20,7 @@ public class CreatureBehavior : MonoBehaviour
     public GameObject torsoBody;
     private GameManager manager;
     public GameObject[] LegComponents, Torsos, Heads, Necks, Eyes, Legs, armatures;
-    public DayNightCycle time;
+    public TimeManager time;
     private int torsonum;
     private float tick;
 
@@ -28,7 +28,7 @@ public class CreatureBehavior : MonoBehaviour
     private void Start()
     {
         if (time == null)
-            time = GameObject.Find("DayNightAndLightController").GetComponent<DayNightCycle>();
+            time = GameObject.Find("GameManager").GetComponent<TimeManager>();
         stats.gender = (int)Random.Range(0, 2);
         if (editor == null)
         editor = GameObject.Find("Editor").GetComponent<CreatureEditor>();
@@ -43,7 +43,7 @@ public class CreatureBehavior : MonoBehaviour
 
     private void Update()
     {
-            brain.lookRad = Mathf.Abs(Mathf.Sin((time.time / 7.64f) - (1.575f - (1.575f * stats.genes[7])))) * (stats.genes[4]/2) + 2;
+            brain.lookRad = Mathf.Abs(Mathf.Sin((time.time * 24 / 7.64f) - (1.575f - (1.575f * stats.genes[7])))) * (stats.genes[4]/2) + 2;
             //action 0 = Food
             // action 1 = water
             // action 2 = Reproduction
@@ -151,7 +151,7 @@ public class CreatureBehavior : MonoBehaviour
             //Debug.Log(1 + ((i + 1) * 4));
             if (stats.genes[4] >= ((i+1) * 4)-2)
             {
-                Debug.Log("Added Eyes");
+                //Debug.Log("Added Eyes");
                 stats.genes[14]++;
             }
             else

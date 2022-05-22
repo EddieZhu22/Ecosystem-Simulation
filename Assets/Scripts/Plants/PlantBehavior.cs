@@ -171,7 +171,7 @@ public class PlantBehavior : MonoBehaviour
             {
                 mate = gameObject;
                 energy -= 100;
-                Debug.Log("repped");
+                //Debug.Log("repped");
                 CreateSeeds();
                 seeds++;
             }

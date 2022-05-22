@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public float year;
+    public float day;
+    public float time;
     void Start()
     {
         
@@ -13,6 +14,7 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        year += Time.deltaTime;
+        time += (Time.deltaTime) * 24 / 60;
+        day += 1 * Time.deltaTime / (60);
     }
 }
