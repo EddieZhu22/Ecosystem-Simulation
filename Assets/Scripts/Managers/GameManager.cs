@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public TreeGenerator generator;
 
     public GameObject database;
-
+    public LayerMask rayLayer;
     public GameUI UI;
     private GameSettings settings;
     public int[] layers = new int[3] { 5, 3, 2 };//initializing network to the right size
@@ -216,7 +216,13 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnAnimals()
     {
-        CreateCreatures(new Vector3(Random.Range(-mapSize.x/2, mapSize.x/2), Random.Range(-mapSize.y/2, mapSize.y/2), Random.Range(-mapSize.z/2, mapSize.z/2)));
+        Vector3 random = new Vector3(Random.Range(-mapSize.x / 2, mapSize.x / 2), 500, Random.Range(-mapSize.z / 2, mapSize.z / 2));
+        if (Physics.Raycast(new Vector3(random.x,500,random.z),-Vector3.up,out RaycastHit hit,Mathf.Infinity,rayLayer))
+        {
+            CreateCreatures(hit.point);
+            Debug.DrawLine(new Vector3(random.x, 500, random.z), hit.point, Color.cyan);
+            Debug.Log(hit.point);
+        }
     }
     public void CreatePlants(Vector3 pos)
     {

@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Leaf
-  m_Shader: {fileID: 10601, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: SHADOWED_RIM _WORLDSPACEOFFSET_ON
+  m_Shader: {fileID: 4800000, guid: b7839dad95683814aa64166edc107ae2, type: 3}
+  m_ShaderKeywords: SHADOWED_RIM _FLIPBOOKBLENDING_OFF _WORLDSPACEOFFSET_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -24,6 +24,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -97,9 +101,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - PixelSnap: 0
+    - _AlphaClip: 0
     - _AlphaOffset: 0
+    - _Blend: 0
+    - _BlendOp: 0
     - _BumpScale: 1
+    - _CameraFadingEnabled: 0
+    - _CameraFarFadeDistance: 2
+    - _CameraNearFadeDistance: 1
     - _ColorMask: 15
+    - _ColorMode: 0
+    - _Cull: 2
     - _CustomColorAmount: 0
     - _Cutoff: 0
     - _DarknessOnSundown: 0.75
@@ -107,9 +119,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DisplacementAmount: 0
     - _DisplacementSpeed: 0
+    - _DistortionBlend: 0.5
+    - _DistortionEnabled: 0
+    - _DistortionStrength: 1
+    - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
     - _EdgeTransparency: 0
     - _EnableExternalAlpha: 0
+    - _FlipbookBlending: 0
+    - _FlipbookMode: 0
     - _Gloss: 0.316
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -121,12 +139,18 @@ Material:
     - _MotionSpeed: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _RimSize: 0
     - _SSSConcentration: 1.36
     - _SelfIllum: 0
     - _ShadowedRim: 1
     - _Shininess: 0.033
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
+    - _SoftParticlesEnabled: 0
+    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
     - _SquashAmount: 1
     - _SrcBlend: 1
@@ -135,6 +159,7 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
+    - _Surface: 0
     - _SwitchColumn: 0
     - _SwitchRow: 0
     - _TextureCutoff: 0.919
@@ -155,6 +180,9 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
+    - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.35658246, g: 0.5566038, b: 0, a: 1}
     - _CustomColorHigh: {r: 0.5528651, g: 0.875, b: 0.4503677, a: 0}
     - _CustomColorLow: {r: 0.13624567, g: 0.33088237, b: 0.13758796, a: 0}
@@ -165,8 +193,22 @@ Material:
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
     - _SSSColor: {r: 0.18431373, g: 0.65882355, b: 0, a: 1}
+    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularTone: {r: 0.058823504, g: 0.056660876, b: 0.056660876, a: 0}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
     - _Wind_Direction: {r: 1, g: 0, b: 1, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &6814382534485890116
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4

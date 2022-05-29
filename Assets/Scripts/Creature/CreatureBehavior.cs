@@ -270,6 +270,7 @@ public class CreatureBehavior : MonoBehaviour
             {
                 Legs[i].SetActive(false);
             }
+            stats.genes[13] = Mathf.Clamp(stats.genes[13], 2, 6);
         }
         GetComponent<CreatureProceduralAnimation>().Set();
         stats.genes[3] = Mathf.Clamp(stats.genes[3], editor.maxSpeed[Mathf.RoundToInt(stats.genes[12]) - 1] / stats.genes[1], editor.maxSpeed[Mathf.RoundToInt(stats.genes[12]) - 1] * stats.genes[13] / stats.genes[1]);
@@ -281,9 +282,12 @@ public class CreatureBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         brain.def = stats.genes[1] * stats.genes[6];
         brain.maxDef = stats.genes[1] * stats.genes[6];
         brain.attack = stats.genes[3] * (2 - stats.genes[6]);
+
+
     }
     private void OnDrawGizmos()
     {

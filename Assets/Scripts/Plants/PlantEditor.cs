@@ -34,6 +34,7 @@ public class PlantEditor : MonoBehaviour
         branchdensitysl.onValueChanged.AddListener(delegate { valChanged(); });
         leavesSizesl.onValueChanged.AddListener(delegate { valChanged(); });
         seedsl.onValueChanged.AddListener(delegate { valChanged(); });
+        seedsl.value = 1;
     }
 
     void Update()

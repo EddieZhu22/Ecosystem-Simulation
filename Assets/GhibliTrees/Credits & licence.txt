@@ -1,0 +1,8 @@
+Credits to these people who helped me with the shaders code:
+
+LoBeyJon Game Dev - https://www.youtube.com/watch?v=b_jLZ2_S6jE
+Ned Makes Games - https://www.youtube.com/watch?v=jcMRaFF9RRI
+
+Licence:
+You may use these models and textures in your projects (even comercial ones). It would be nice of you to credit my Twitter @lucsmattos20wg FOR THE 3D MODELS.
+You may not sell the individual assets or the whole .rar file.
