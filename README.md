@@ -1,5 +1,5 @@
 # Ecosystem-Simulation
-A small Ecosystem Interactive Simulator
+An Interactive Ecosystem Simulator
 
 WORK IN PROGRESS
 
