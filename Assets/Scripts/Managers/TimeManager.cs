@@ -6,6 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     public float day;
     public float time;
+    public float accuracy;
     void Start()
     {
         

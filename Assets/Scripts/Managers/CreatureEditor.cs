@@ -9,25 +9,59 @@ public class CreatureEditor : MonoBehaviour
     public GameManager manager;
     public GameUI ui;
 
-    public int legs = 4, eyes = 5, heads = 1;
-    public float torsoHeight, neckHeight, totalWeight, totalHeight, energyOutput;
-    public GameObject[] LegComponents, Torsos, Heads, Necks, Eyes, Legs;
+    [Header("Amount of Body Parts")]
+    public int legs = 4;
+    public int eyes = 5;
+    public int heads = 1;
+
+    [Header("Height Settings")]
+    public float torsoHeight;
+    public float neckHeight;
+    public float totalWeight;
+    public float totalHeight;
+    public float energyOutput;
+
+    [Header("Component Objects")]
+    public GameObject[] LegComponents;
+    public GameObject[] Torsos;
+    public GameObject[] Heads;
+    public GameObject[] Necks;
+    public GameObject[] Eyes;
+    public GameObject[] Legs;
+
+    [Header("Positions")]
     public Transform headHeight;
-    public Vector3[] HeadPos, TorsoScale, TorsoPos;
-    public string[] LegsTextStr, TorsoTextStr, HeadsTextStr, NeckTextStr;
+    public Vector3[] HeadPos;
+    public Vector3[] TorsoScale;
+    public Vector3[] TorsoPos;
+
+    [Header("Weights")]
+    public float[] LegWeights;
+    public float[] TorsoWeights;
+    public float[] HeadWeights;
+    public float[] NeckWeights;
+    public float[] EyeWeights;
+    public float[] minSpeed;
+    public float[] maxSpeed;
+    public float[] minStorage;
+    public float[] maxStorage;
+
+    [Header("Text Strings/UI")]
+    public string[] LegsTextStr;
+    public string[] TorsoTextStr;
+    public string[] HeadsTextStr;
+    public string[] NeckTextStr;
     public Slider legsSlider, eyesSlider, torsoHeightSlider, speedSlider, lookRadiusSlider, maxOffSpringSlider, sizeSlider, storageSlider, colorSlider, urgeSlider;
     public TMP_Text LegsText, TorsoText, HeadsText, NeckText;
     public Text Speed, LookRadius, maxOffspring, Size, ReproductiveUrge, Storage;
-    public float[] LegWeights, TorsoWeights, HeadWeights, NeckWeights, EyeWeights, minSpeed, maxSpeed, minStorage, maxStorage;
     public InputField[] inputs;
     public Toggle predatorToggle;
-    private bool done;
+
+    [HideInInspector]
     public int legNum = 1, legprevnum, headNum = 1, headprevnum, neckNum = 1, neckprevnum, torsoNum = 1, torsoprevnum, predator, diet;
-
+    [Header("Materials")]
     public Material mat;
-
     private GameObject Creature;
-
     void Start()
     {
         ui = GameObject.Find("Canvas").GetComponent<GameUI>();
@@ -94,8 +128,8 @@ public class CreatureEditor : MonoBehaviour
         speedSlider.maxValue = maxSpeed[legNum - 1] * legs / totalWeight;
         storageSlider.minValue = minStorage[torsoNum - 1];
         storageSlider.maxValue = maxStorage[torsoNum - 1];
-        lookRadiusSlider.minValue = (eyes * 4) -2;
-        lookRadiusSlider.maxValue = 4*eyes+1;
+        lookRadiusSlider.minValue = (eyes * 4) - 2;
+        lookRadiusSlider.maxValue = 4 * eyes + 1;
         maxOffSpringSlider.minValue = 2;
         maxOffSpringSlider.maxValue = Mathf.RoundToInt(totalWeight / 30);
         mat.color = new Color(0, Mathf.Abs(colorSlider.value), 0);
@@ -108,11 +142,11 @@ public class CreatureEditor : MonoBehaviour
         inputs[0].placeholder.GetComponent<Text>().text = (totalWeight).ToString() + " kg";
         inputs[1].placeholder.GetComponent<Text>().text = (totalHeight * 5).ToString() + " m";
         inputs[2].placeholder.GetComponent<Text>().text = (energyOutput).ToString() + " E/day";
-        if(predatorToggle.isOn == false)
+        if (predatorToggle.isOn == false)
         {
             predator = 0;
         }
-        if(predatorToggle.isOn == true)
+        if (predatorToggle.isOn == true)
         {
             predator = 1;
         }

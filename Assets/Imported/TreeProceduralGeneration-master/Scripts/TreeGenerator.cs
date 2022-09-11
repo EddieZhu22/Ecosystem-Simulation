@@ -257,7 +257,7 @@ public class TreeGenerator : MonoBehaviour
             {
                 int subBasePolygon = Mathf.Max(Mathf.Max(2, basePolygon / 3), Mathf.Min(2 * basePolygon / 3, basePolygon - 1)) + 1;
                 int subBasePolygon2 = basePolygon - subBasePolygon + 2;
-                Debug.Log(basePolygon * Mathf.PerlinNoise(seed, seed));
+                //Debug.Log(basePolygon * Mathf.PerlinNoise(seed, seed));
                 int newOffset = Mathf.RoundToInt(basePolygon * Mathf.PerlinNoise(seed, seed));
                 Vector3[] subStartVertices = new Vector3[subBasePolygon];
                 Vector2[] subStartUv = new Vector2[subBasePolygon];

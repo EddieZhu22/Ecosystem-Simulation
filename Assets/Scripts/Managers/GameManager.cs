@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject creaturePrefab, plantPrefab;//holds bot prefab
     public TreeGenerator generator;
 
-    public GameObject database;
+    public TreeDB database;
     public LayerMask rayLayer;
     public GameUI UI;
     private GameSettings settings;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public int numOfPlants;
 
-    public float[] averages;
+    public float[] averages1, averages2, averages3;
 
     public Brain[] creatures;
 
@@ -160,33 +160,66 @@ public class GameManager : MonoBehaviour
         // Every so often update the UI and averages of the data. 
         if (tick < 0)
         {
-            float[] temp = new float[16];
+            float[] temp1 = new float[18];
+            float[] temp2= new float[18];
+            float[] temp3 = new float[18];
             plants = GameObject.FindObjectsOfType<PlantBehavior>();
             creatures = GameObject.FindObjectsOfType<Brain>();
             prey = GameObject.FindGameObjectsWithTag("prey");
             predator = GameObject.FindGameObjectsWithTag("predator");
             for (int i = 0; i < creatures.Length; i++)
             {
-                temp[0] = creatures[i].stats.genes[3] + temp[0];
-                temp[1] = creatures[i].stats.genes[4] + temp[1];
-                temp[2] = creatures[i].stats.genes[3] + temp[2];
-                temp[3] = creatures[i].stats.genes[5] + temp[3];
-            }
-            if(creatures.Length > 0)
-            {
-                for (int i = 0; i < 16; i++)
+                for(int k = 0; k < 18; k++)
                 {
-                    averages[i] = temp[i] / creatures.Length;
+                    temp1[k] = creatures[i].stats.genes[k] + temp1[k];
+             
                 }
             }
-            else
+            for (int i = 0; i < prey.Length; i++)
             {
-                for (int i = 0; i < 16; i++)
+                for (int k = 0; k < 18; k++)
                 {
-                    averages[i] = 0;
+                    temp2[k] = prey[i].GetComponent<Brain>().stats.genes[k] + temp2[k];
                 }
             }
-            UI.avgData.text = "Speed: " + averages[0] + ", Look Radius: " + averages[1] + ", Rotation Speed: " + averages[2] + ", Gestation: " + averages[3] + ", Creatures: " + creatures.Length + ", Plants: " + plants.Length;
+            for (int i = 0; i < predator.Length; i++)
+            {
+                for (int k = 0; k < 18; k++)
+                {
+                    temp3[k] = predator[i].GetComponent<Brain>().stats.genes[k] + temp3[k];
+                }
+            }
+            if (creatures.Length > 0)
+            {
+                for (int i = 0; i < 18; i++)
+                {
+                    averages1[i] = temp1[i] / creatures.Length;
+                    averages2[i] = temp2[i] / prey.Length;
+                    averages3[i] = temp3[i] / predator.Length;
+                }
+            }
+            if(creatures.Length <= 0)
+            {
+                for (int i = 0; i < 18; i++)
+                {
+                    averages1[i] = 0;
+                }
+            }
+            if (prey.Length <= 0)
+            {
+                for (int i = 0; i < 18; i++)
+                {
+                    averages2[i] = 0;
+                }
+            }
+            if (predator.Length < 0)
+            {
+                for (int i = 0; i < 18; i++)
+                {
+                    averages3[i] = 0;
+                }
+            }
+            UI.avgData.text = "Speed: " + averages1[3] + ", Look Radius: " + averages1[4]  + ", Gestation: " + averages1[5] + ", Creatures: " + creatures.Length + ", Plants: " + plants.Length;
             tick = -1;
         }
         // Set values instantly.
@@ -194,8 +227,21 @@ public class GameManager : MonoBehaviour
         MutationStrength = UI.MutationStrength.value;
         MutationChance2 = UI.MutationChance2.value;
         MutationStrength2 = UI.MutationStrength2.value;
-        //set camera values instantly.
         settings.mode = UI.cameraSettings.value;
+        //set camera values instantly.
+        if (Input.GetKeyDown("h"))
+        {
+            float p = 0;
+            if(UI.gameObject.activeSelf == false)
+            {
+                p = 1;
+                UI.gameObject.SetActive(true);
+            }
+            else if(p == 0)
+            {
+                UI.gameObject.SetActive(false);
+            }
+        }
     }
     public void CreateCreatures(Vector3 pos)
     {
@@ -236,7 +282,7 @@ public class GameManager : MonoBehaviour
             int num = 0;
             for (int k = 0; k < 14; k++)
             {
-                if (database.GetComponent<TreeDB>().genes[i, k] == details2[k])
+                if (database.genes[i, k] == details2[k])
                 {
                     num++;
                     //Debug.Log(num);
@@ -244,7 +290,7 @@ public class GameManager : MonoBehaviour
             }
             if (num >= 14)
             {
-                GameObject tree = Instantiate(database.GetComponent<TreeDB>().TreeGameObjectDataBase[i], pos, new Quaternion(0, 0, 0, 0));
+                GameObject tree = Instantiate(database.TreeGameObjectDataBase[i], pos, new Quaternion(0, 0, 0, 0));
                 PlantDetails detail = tree.AddComponent<PlantDetails>();
 
                 detail.genes = details2;
@@ -258,9 +304,9 @@ public class GameManager : MonoBehaviour
         }
         if (match == false)
         {
-            for (int i = 0; i < database.GetComponent<TreeDB>().TreeGameObjectDataBase.Length; i++)
+            for (int i = 0; i < database.TreeGameObjectDataBase.Length; i++)
             {
-                if (database.GetComponent<TreeDB>().TreeGameObjectDataBase[i] == null && placed == false)
+                if (database.TreeGameObjectDataBase[i] == null && placed == false)
                 {
                     generator.seed = details2[4];
                     generator._recursionLevel = (int)details2[5];
@@ -273,10 +319,10 @@ public class GameManager : MonoBehaviour
                     generator.gen2();
                     for (int k = 0; k < details2.Length; k++)
                     {
-                        database.GetComponent<TreeDB>().genes[i, k] = details2[k];
+                        database.genes[i, k] = details2[k];
                     }
                     //database.TreeGameObjectDataBase[i] = generator.tree;
-                    database.GetComponent<TreeDB>().GenerateTree(generator.tree, i);
+                    database.GenerateTree(generator.tree, i);
                     //database.TreeGameObjectDataBase = new GameObject[database.TreeGameObjectDataBase.Length + 1];
 
 

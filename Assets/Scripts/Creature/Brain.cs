@@ -32,7 +32,7 @@ public class Brain : MonoBehaviour
 
     public float digestionDuration = 1000, t, refractoryPeriod;
 
-    public bool done, done2, readyToMate;
+    public bool foundMate, mated, readyToMate;
     private float tick;
     public float action, attack, def, maxDef;
     private int foodCollected;
@@ -164,8 +164,8 @@ public class Brain : MonoBehaviour
                     transform.localEulerAngles = new Vector3(0, angle.y + 90, 0);
                     //rb.AddRelativeForce(0, 0, stats.genes[3] * 200);
                     transform.Translate(toTarget * stats.genes[3] / 25f * Time.deltaTime, Space.World);
-                    food -= stats.genes[0] / 80 * Time.deltaTime;
-                    water -= stats.genes[0] / 1000 * Time.deltaTime;
+                    food -= stats.genes[0] / 70 * Time.deltaTime;
+                    water -= stats.genes[0] / 100000 * Time.deltaTime;
                 }
                 else if (Vector3.Distance(transform.position, target.position) <= 1.5)
                 {
@@ -186,7 +186,6 @@ public class Brain : MonoBehaviour
             else if (target == null && action != 2)
             {
                 Wander();
-                //Log("Wander_Success");
             }
         }
         if (stats.genes[16] == 1)
@@ -199,9 +198,8 @@ public class Brain : MonoBehaviour
                     transform.LookAt(target.transform.position);
                     Vector3 angle = transform.localEulerAngles;
                     transform.localEulerAngles = new Vector3(0, angle.y + 90, 0);
-                    //rb.AddRelativeForce(0, 0, stats.genes[3] * 200);
                     transform.Translate(toTarget * stats.genes[3] / 10f * Time.deltaTime, Space.World);
-                    food -= stats.genes[0] / 80 * Time.deltaTime;
+                    food -= stats.genes[0] / 70 * Time.deltaTime;
                     water -= stats.genes[0] / 1000 * Time.deltaTime;
                 }
                 if (Vector3.Distance(transform.position, target.position) <= 1.5)
@@ -210,17 +208,16 @@ public class Brain : MonoBehaviour
                     {
                         if(stats.genes[17] == 0)
                         {
-                            Debug.Log("fighting");
                             target.GetComponent<Brain>().def -= attack * Time.timeScale;
                             target.localScale -= new Vector3(attack / target.GetComponent<Brain>().maxDef, attack / target.GetComponent<Brain>().maxDef, attack/ target.GetComponent<Brain>().maxDef);
                             if(target.GetComponent<Brain>().def < 0)
                             {
-                                Debug.Log("dead!");
                                 Destroy(target.root.gameObject);
                                 food += stats.genes[8];
                             }
-                            food -= stats.genes[0] / 80 * Time.deltaTime;
-                            water -= stats.genes[0] / 1000 * Time.deltaTime;
+                            food += stats.genes[8]/10 * Time.deltaTime;
+                            food -= stats.genes[0] / 60 * Time.deltaTime;
+                            water -= stats.genes[0] / 70000 * Time.deltaTime;
                         }
                     }
 
@@ -236,7 +233,7 @@ public class Brain : MonoBehaviour
     }
     private void Wander()
     {
-        food -= stats.genes[0] / 80 * Time.deltaTime;
+        food -= stats.genes[0] / 140 * Time.deltaTime;
         water -= stats.genes[0] / 10000 * Time.deltaTime;
         tick -= Time.deltaTime;
         if (tick < 0)
@@ -267,7 +264,7 @@ public class Brain : MonoBehaviour
             if(hitColliders2.Length > 0)
             {
                 action = 3;
-                food -= stats.genes[0] / 80 * Time.deltaTime;
+                food -= stats.genes[0] / 70 * Time.deltaTime;
                 water -= stats.genes[0] / 10000 * Time.deltaTime;
                 tick -= Time.deltaTime;
                 if (tick < 0)
@@ -324,14 +321,14 @@ public class Brain : MonoBehaviour
             Creature.GetComponent<CreatureBehavior>().time = transform.parent.GetComponent<CreatureBehavior>().time;
         }
         refractoryPeriod = 0;
-        done2 = true;
+        mated = true;
         readyToMate = false;
         action = 0;
     }
 
     public void FindMate()
     {
-        if (done2 == false)
+        if (mated == false)
         {
             readyToMate = true;
             // Create sphere to collide using lookRadius
@@ -342,7 +339,7 @@ public class Brain : MonoBehaviour
             //find distance of each element in array
             for (int i = 0; i < hitColliders.Length; i++)
             {
-                if (done == false)
+                if (foundMate == false)
                 {
                     Communicate(hitColliders[i].gameObject);
                 }
@@ -357,7 +354,7 @@ public class Brain : MonoBehaviour
                 readyToMate = false;
                 Wander();
             }*/
-            if (done == true)
+            if (foundMate == true)
             {
                 if (mate != null)
                 {
@@ -369,8 +366,8 @@ public class Brain : MonoBehaviour
                         transform.localEulerAngles = new Vector3(0, angle.y + 90, 0);
                         //rb.AddRelativeForce(0, 0, stats.genes[3] * 200);
                         transform.Translate(toTarget * stats.genes[3] / 10 * Time.deltaTime, Space.World);
-                        food -= stats.genes[0] / 80 * Time.deltaTime;
-                        water -= stats.genes[0] / 10000 * Time.deltaTime;
+                        food -= stats.genes[0] / 70 * Time.deltaTime;
+                        water -= stats.genes[0] / 70000 * Time.deltaTime;
                         if (Vector3.Distance(transform.position, mate.position) < 1)
                         {
                             Reproduce();
@@ -390,21 +387,21 @@ public class Brain : MonoBehaviour
             }
 
         }
-        if (done2 == true)
+        if (mated == true)
         {
             action = 0;
         }
     }
     public void Communicate(GameObject receiver)
     {
-        if (receiver.GetComponent<Brain>().readyToMate == true && receiver.GetComponent<CreatureDetails>().gender != stats.gender && receiver.GetComponent<Brain>().done2 == false && GetComponent<Brain>().done2 == false && receiver.tag == gameObject.tag)
+        if (receiver.GetComponent<Brain>().readyToMate == true && receiver.GetComponent<CreatureDetails>().gender != stats.gender && receiver.GetComponent<Brain>().mated == false && GetComponent<Brain>().mated == false && receiver.tag == gameObject.tag)
         {
             mate = receiver.transform;
             receiver.GetComponent<Brain>().mate = transform;
-            done = true;
+            foundMate = true;
         }
     }
-    public void Meiosis()
+    private void Meiosis()
     {
         //set chromosomes equal to parents
         finalChromosome1 = parent1.gameObject.GetComponent<CreatureDetails>().genes;

@@ -21,7 +21,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
     {
         if (transform.parent != null)
         {
-            if (transform.parent.name == "Editor")
+            if (transform.parent.name == "Creature Editor")
                 Editor();
         }
         else
@@ -34,7 +34,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
     {
         float averagePos = 0.0F;
         float sumPos = 0;
-        if (transform.root.gameObject.name == "Editor")
+        if (transform.root.gameObject.name == "Creature Editor")
         {
             for (int i = 0; i < targets.Length; i++)
             {
@@ -113,7 +113,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
         legs = GameObject.FindGameObjectsWithTag("ar");
         for (int i = 0; i < legs.Length; i++)
         {
-            if (targets[i].transform.root.gameObject.name == "Editor" || targets[i].transform.root != transform)
+            if (targets[i].transform.root.gameObject.name == "Creature Editor" || targets[i].transform.root != transform)
             {
                 legs[i] = null;
             }
@@ -124,7 +124,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
         for (int i = 0; i < targets.Length; i++)
         {
             //Debug.Log(targets[i].transform.root);
-            if (targets[i].transform.root.gameObject.name == "Editor" || targets[i].transform.root != transform)
+            if (targets[i].transform.root.gameObject.name == "Creature Editor" || targets[i].transform.root != transform)
             {
                 targets[i] = null;
             }
@@ -156,7 +156,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
         legs = GameObject.FindGameObjectsWithTag("ar");
         for (int i = 0; i < legs.Length; i++)
         {
-            if (legs[i].transform.root.gameObject.name != "Editor")
+            if (legs[i].transform.root.gameObject.name != "Creature Editor")
             {
                 legs[i] = null;
             }
@@ -166,7 +166,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
         legs = gameObjectList.ToArray();
         for (int i = 0; i < targets.Length; i++)
         {
-            if (targets[i].transform.root.gameObject.name != "Editor")
+            if (targets[i].transform.root.gameObject.name != "Creature Editor")
             {
                 targets[i] = null;
             }

@@ -16,7 +16,7 @@ MonoBehaviour:
   layers:
   - texture: {fileID: 2800000, guid: 69bbfd87ed04bba4f8d6fe405b05b2ee, type: 3}
     tint: {r: 0.7794118, g: 0.7556975, b: 0.43555364, a: 0}
-    tintStrength: 0.633
+    tintStrength: 0.638
     startHeight: 0
     blendStrength: 0
     textureScale: 10

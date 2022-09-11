@@ -22,44 +22,18 @@ public class Seed : MonoBehaviour
     public bool placed;
     void Start()
     {
-        editor = p2.GetComponent<PlantBehavior>().editor;
-        generator = p2.GetComponent<PlantBehavior>().generator;
-        canvas = generator.gameObject.GetComponent<GameManager>().UI.gameObject;
-        database = generator.gameObject.GetComponent<GameManager>().database;
-        genes = new float[14];
-        if (type != 0 || type != 4)
-        {
-            float rand = Random.Range(0, 1);
-            if(rand < 0.3f)
-            {
-                Debug.Log(rand);
-                //Destroy(gameObject);
-            }
-        }
-        for (int i = 0; i < 14; i++)
-        {
-            genes[i] = (p1.GetComponent<PlantDetails>().genes[i] + p2.GetComponent<PlantDetails>().genes[i]) / 2;
-
-            float rand = Random.Range(0, 1);
-
-            if (rand < canvas.GetComponent<GameUI>().MutationChance2.value)
-            {
-                //mutate
-                genes[i] += Random.Range(-canvas.GetComponent<GameUI>().MutationStrength.value * genes[i], canvas.GetComponent<GameUI>().MutationStrength.value * genes[i]);
-            }
-        }
-        //mutate
-
+        // Initialize the seed
+        init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -3)
+        if(transform.position.y < -3) // if seed sank underwater deep enough it cannot survive
         {
             Destroy(gameObject);
         }
-        if (type != 0 || type != 4)
+        if (type != 0 || type != 4) // if the types of seeds aren't fruit seeds or toxic seeds
         {
             t += Time.timeScale;
             if (t > dormantTime)
@@ -67,22 +41,22 @@ public class Seed : MonoBehaviour
                 CreateTree();
             }
         }
-        if (type == 0 || type == 4)
+        if (type == 0 || type == 4) // if the seeds are fruit seeds or toxic seeds
         {
             t += Time.timeScale;
             transform.localPosition = Vector3.zero;
             if (t > dd)
             {
-                GetComponent<Rigidbody>().isKinematic = false;
+                //GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<SphereCollider>().enabled = true;
-                GetComponent<MeshRenderer>().enabled = true;
+                //GetComponent<MeshRenderer>().enabled = true;
                 transform.parent = null;
                 type = -1;
                 t = 0;
             }
         }
     }
-    void CreateTree()
+    private void CreateTree()
     {
         for (int i = 0; i < 100; i++)
         {
@@ -147,5 +121,28 @@ public class Seed : MonoBehaviour
             }
         }
         Destroy(gameObject);
+    }
+    private void init()
+    {
+        editor = p2.GetComponent<PlantBehavior>().editor;
+        generator = p2.GetComponent<PlantBehavior>().generator;
+        canvas = generator.GetComponent<GameManager>().UI.gameObject;
+        database = generator.GetComponent<GameManager>().database.gameObject;
+        genes = new float[14];
+
+        // set genes of the plant
+        for (int i = 0; i < 14; i++)
+        {
+            genes[i] = (p1.GetComponent<PlantDetails>().genes[i] + p2.GetComponent<PlantDetails>().genes[i]) / 2;
+
+            float rand = Random.Range(0, 1);
+
+            if (rand < canvas.GetComponent<GameUI>().MutationChance2.value)
+            {
+                //mutate
+                genes[i] += Random.Range(-canvas.GetComponent<GameUI>().MutationStrength.value * genes[i], canvas.GetComponent<GameUI>().MutationStrength.value * genes[i]);
+            }
+        }
+        //mutate
     }
 }

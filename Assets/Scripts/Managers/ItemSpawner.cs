@@ -33,7 +33,7 @@ public class ItemSpawner : MonoBehaviour
             {
                 //Debug.Log(hitInfo.point);
                 //Instantiate(prefabs[0], hitInfo.point, Quaternion.identity);
-                if (Input.mousePosition.x < 740)
+                if (hitInfo.collider.gameObject.layer != mask)
                 {
                     if (ui.mainDropDown.value == 1)
                     {
@@ -47,6 +47,7 @@ public class ItemSpawner : MonoBehaviour
                     }
                 }
             }
+            /*
             if (Physics.Raycast(ray, out RaycastHit hitpt, Mathf.Infinity))
             {
                 Debug.Log(hitInfo.transform.gameObject.layer);
@@ -60,6 +61,7 @@ public class ItemSpawner : MonoBehaviour
                     }
                 }
             }
+            */
         }
 
     }

@@ -55,7 +55,6 @@ public class GameUI : MonoBehaviour
     {
 
         manager.Gamespeed = GameSpeed.value;
-
         Spawn();
         checkScene();
     }
@@ -99,6 +98,7 @@ public class GameUI : MonoBehaviour
             }
         }
     }
+
     private void checkScene()
     {
         if (scene == 0)

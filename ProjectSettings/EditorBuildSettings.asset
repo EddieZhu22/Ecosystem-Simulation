@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/VideoScenes/Ecosystem 1.unity
+    guid: 85a0d6843f91f9d42b47fa37ce590ed4
   - enabled: 1
     path: Assets/Scenes/Ecosystem.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab

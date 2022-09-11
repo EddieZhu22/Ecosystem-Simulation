@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17284ebf5e80436eb6089f8c7459dab, type: 3}
   m_Name: WaterSurfaceData
   m_EditorClassIdentifier: 
-  _waterMaxVisibility: 6
+  _waterMaxVisibility: 3
   _absorptionRamp:
     serializedVersion: 2
-    key0: {r: 0.36320752, g: 0.9378489, b: 1, a: 1}
-    key1: {r: 0, g: 0.53607124, b: 0.6509434, a: 1}
-    key2: {r: 0, g: 0.35689157, b: 0.4528302, a: 0}
-    key3: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 0.18396229, g: 0.89963174, b: 1, a: 1}
+    key2: {r: 0.021626905, g: 0.49048996, b: 0.509434, a: 0}
+    key3: {r: 0, g: 0.275, b: 0.44, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 16384
-    ctime2: 65535
-    ctime3: 65535
+    ctime1: 6746
+    ctime2: 20817
+    ctime3: 43581
     ctime4: 65535
     ctime5: 0
     ctime6: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 3
+    m_NumColorKeys: 5
     m_NumAlphaKeys: 2
   _scatterRamp:
     serializedVersion: 2
@@ -115,14 +115,14 @@ MonoBehaviour:
       y: 0
     onmiDir: 0
   _customWaves: 0
-  randomSeed: 69696
+  randomSeed: 66528
   _basicWaveSettings:
-    numWaves: 4
+    numWaves: 10
     amplitude: 0.1
-    direction: -169
-    wavelength: 10
+    direction: 0
+    wavelength: 1
   _foamSettings:
-    foamType: 2
+    foamType: 0
     basicFoam:
       serializedVersion: 2
       m_Curve:
@@ -135,15 +135,6 @@ MonoBehaviour:
         weightedMode: 0
         inWeight: 0
         outWeight: 0.15316528
-      - serializedVersion: 3
-        time: 0.5541687
-        value: 0.047836304
-        inSlope: 0.6611113
-        outSlope: 0.6611113
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.55429333
-        outWeight: 0
       - serializedVersion: 3
         time: 0.6247411
         value: 0.39698213
@@ -162,6 +153,15 @@ MonoBehaviour:
         weightedMode: 0
         inWeight: 0.27977753
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.6611113
+        outSlope: 0.6611113
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.55429333
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -220,8 +220,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
-        value: 0
+        time: 0.9291687
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0

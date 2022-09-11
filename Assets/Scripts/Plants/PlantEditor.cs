@@ -6,25 +6,56 @@ using TMPro;
 
 public class PlantEditor : MonoBehaviour
 {
+    [Header("References")]
     public GameObject seed;
     public TreeGenerator generator;
-
     public GameManager manager;
-
     public GameUI ui;
 
-    public Slider recsl, trunksl, floorhsl, firstbranchsl, twistinessl, branchdensitysl, leavesSizesl, seedsl;
+    [Header("Attributes")]
+    public float LightConsumption;
+    public float waterConsumption;
+    public float Weight;
+    public float Height;
+    public float rootType;
+    public float seedType;
+    public int seedNum = 1;
+    public int genderNum = 1;
+
+    [Header("UI")]
+    public Slider recsl;
+    public Slider trunksl;
+    public Slider floorhsl;
+    public Slider firstbranchsl;
+    public Slider twistinessl;
+    public Slider branchdensitysl;
+    public Slider leavesSizesl;
+    public Slider seedsl;
     public Text rectxt, trunktxt, floorhtxt, firstbranchtxt, twistinestxt, branchdensitytxt, leavesSizetxt, seedtxt, lightconsumptiontxt, waterconsumptiontxt, weighttxt, heighttxt;
-
-    public float LightConsumption, waterConsumption, Weight, Height, rootType, seedType;
-
-    public string[] SeedTextStr, GenderTextStr;
-
     public TMP_Text GenderText, SeedText;
+    public string[] SeedTextStr;
+    public string[] GenderTextStr;
 
-    public int seedNum = 1, genderNum = 1;
-    bool changed;
+    private bool changed;
     void Start()
+    {
+        init();
+    }
+
+    void Update()
+    {
+
+        SeedText.text = SeedTextStr[seedNum - 1];
+        GenderText.text = GenderTextStr[genderNum - 1];
+
+        if (changed == true)
+        {
+            CreateTree();
+            changed = false;
+        }
+    }
+    #region Methods
+    private void init()
     {
         recsl.onValueChanged.AddListener(delegate { valChanged(); });
         trunksl.onValueChanged.AddListener(delegate { valChanged(); });
@@ -36,11 +67,14 @@ public class PlantEditor : MonoBehaviour
         seedsl.onValueChanged.AddListener(delegate { valChanged(); });
         seedsl.value = 1;
     }
-
-    void Update()
+    private void valChanged()
+    {
+        changed = true;
+    }
+    private void CreateTree()
     {
         LightConsumption = leavesSizesl.value * trunksl.value;
-        waterConsumption = (rootType + 1) * (Weight/10);
+        waterConsumption = (rootType + 1) * (Weight / 10);
         Weight = (recsl.value * trunksl.value * floorhsl.value * firstbranchsl.value * branchdensitysl.value * leavesSizesl.value) * 100;
         Height = (firstbranchsl.value * floorhsl.value) * 100;
 
@@ -58,9 +92,6 @@ public class PlantEditor : MonoBehaviour
         leavesSizetxt.text = "Leaves Size: " + leavesSizesl.value;
         seedtxt.text = "Seed: " + seedsl.value;
 
-        SeedText.text = SeedTextStr[seedNum - 1];
-        GenderText.text = GenderTextStr[genderNum - 1];
-
         generator._recursionLevel = (int)recsl.value;
         generator._trunkThickness = trunksl.value;
         generator._floorHeight = floorhsl.value;
@@ -69,19 +100,9 @@ public class PlantEditor : MonoBehaviour
         generator._branchDensity = branchdensitysl.value;
         generator._leavesSize = leavesSizesl.value;
         generator.seed = seedsl.value;
-
-
-        if (changed == true)
-        {
-            generator.gen();
-            generator.tree.transform.parent = this.transform;
-            generator.tree.transform.localPosition = Vector3.zero;
-            changed = false;
-        }
-    }
-    private void valChanged()
-    {
-        changed = true;
+        generator.gen();
+        generator.tree.transform.parent = this.transform;
+        generator.tree.transform.localPosition = Vector3.zero;
     }
     public void SetDetails()
     {
@@ -158,4 +179,5 @@ public class PlantEditor : MonoBehaviour
 
         }
     }
+    #endregion
 }

@@ -48,32 +48,32 @@ public class FreeLookCam : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.position = transform.position + (-transform.right * movementSpeed * 1/100);
+                transform.position = transform.position + (-transform.right * movementSpeed * 100 * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                transform.position = transform.position + (transform.right * movementSpeed * 1/100);
+                transform.position = transform.position + (transform.right * movementSpeed * 100 * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
-                transform.position = transform.position + (transform.forward * movementSpeed * 1/100);
+                transform.position = transform.position + (transform.forward * movementSpeed * 100 * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                transform.position = transform.position + (-transform.forward * movementSpeed * 1/100);
+                transform.position = transform.position + (-transform.forward * movementSpeed * 100 * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.Q))
             {
-                transform.position = transform.position + (-transform.up * movementSpeed * 1/100);
+                transform.position = transform.position + (-transform.up * movementSpeed * 100 * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.E))
             {
-                transform.position = transform.position + (transform.up * movementSpeed * 1/100);
+                transform.position = transform.position + (transform.up * movementSpeed * 100 * Time.deltaTime);
             }
 
          /*   if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
