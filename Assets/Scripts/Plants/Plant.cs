@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlantBehavior : MonoBehaviour
+public class PlantBehavior : Entity
 {
     public PlantDetails details;
     public PlantEditor editor;
     public TreeGenerator generator;
 
     public GameObject seed, mate;
-    public float age, range, tick, tick2;
+    public float range, tick, tick2;
     public float[] distanceColl;
     public Collider[] colliders;
     public Transform target;
