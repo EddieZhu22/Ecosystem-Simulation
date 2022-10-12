@@ -8,7 +8,7 @@ public class FreeLookCam : MonoBehaviour
     public GameObject crosshair;
 
     private bool looking = false;
-    private GameSettings settings;
+    [SerializeField] private GameManager manager;
     private Transform rig;
     [SerializeField] private Vector3 rigPos, rigRot;
     public Transform target;
@@ -20,7 +20,6 @@ public class FreeLookCam : MonoBehaviour
     private void Start()
     {
         rig = transform.parent;
-        settings = GameObject.Find("GameManager").GetComponent<GameSettings>();
     }
 
     private void Update()
@@ -30,17 +29,17 @@ public class FreeLookCam : MonoBehaviour
 
         if(target != null)
         {
-           settings.mode = 2;
+           manager.settings.mode = 2;
         }
 
 
-        if (settings.mode == 0)
+        if (manager.settings.mode == 0)
         { 
             transform.localPosition = rigPos;
             transform.localEulerAngles = rigRot;
             transform.parent = rig;
         }
-        else if (settings.mode == 1)
+        else if (manager.settings.mode == 1)
         {
             transform.parent = null;
             var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
@@ -76,16 +75,6 @@ public class FreeLookCam : MonoBehaviour
                 transform.position = transform.position + (transform.up * movementSpeed * 100 * Time.deltaTime);
             }
 
-         /*   if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
-            {
-                transform.position = transform.position + (Vector3.up * movementSpeed * 1/100);
-            }
-
-            if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.PageDown))
-            {
-                transform.position = transform.position + (-Vector3.up * movementSpeed * 1/100);
-            }*/
-
             if (looking)
             {
                 Cursor.visible = true;
@@ -110,7 +99,7 @@ public class FreeLookCam : MonoBehaviour
                 StopLooking();
             }
         }
-        else if (settings.mode == 2)
+        else if (manager.settings.mode == 2)
         {
             Vector3 desiredPosition = target.position + offset;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
@@ -118,7 +107,7 @@ public class FreeLookCam : MonoBehaviour
             transform.LookAt(target);
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                settings.mode = 1;
+                manager.settings.mode = 1;
                 target = null;
                 ui.scene = 0;
             }

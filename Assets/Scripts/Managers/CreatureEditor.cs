@@ -61,12 +61,9 @@ public class CreatureEditor : MonoBehaviour
     public int legNum = 1, legprevnum, headNum = 1, headprevnum, neckNum = 1, neckprevnum, torsoNum = 1, torsoprevnum, predator, diet;
     [Header("Materials")]
     public Material mat;
-    private GameObject Creature;
+    public GameObject Creature;
     void Start()
     {
-        ui = GameObject.Find("Canvas").GetComponent<GameUI>();
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Creature = GameObject.Find("Creature");
         SortLegs();
         SortHeads();
     }
@@ -77,6 +74,7 @@ public class CreatureEditor : MonoBehaviour
         {
             Creature.GetComponent<CreatureProceduralAnimation>().moveDist[i] = 0;
         }
+        Creature.GetComponent<CreatureProceduralAnimation>().Set();
         // methods
         UI();
         SortLegs();
@@ -102,7 +100,6 @@ public class CreatureEditor : MonoBehaviour
         manager.CreatureDetails[ui.selected, 8] = storageSlider.value;
         manager.CreatureDetails[ui.selected, 9] = urgeSlider.value;
 
-        //GETTING MUTATED!
         manager.CreatureDetails[ui.selected, 10] = headNum;
         manager.CreatureDetails[ui.selected, 11] = neckNum;
         manager.CreatureDetails[ui.selected, 12] = legNum;
@@ -173,7 +170,6 @@ public class CreatureEditor : MonoBehaviour
             Legs = GameObject.FindGameObjectsWithTag("edleg");
 
             legprevnum = legNum;
-            Creature.GetComponent<CreatureProceduralAnimation>().Editor();
         }
     }
     void SortHeads()

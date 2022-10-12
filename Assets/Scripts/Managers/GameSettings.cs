@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSettings : MonoBehaviour
+[System.Serializable]
+public class GameSettings
 {
     public int mode;
+    public float waterHeight;
+    public int CreatureLOD;
 }

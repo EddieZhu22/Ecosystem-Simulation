@@ -16,13 +16,8 @@ public class ItemSpawner : MonoBehaviour
 
     public GameManager manager;
 
-    public GameUI ui;
+    [SerializeField] private GameUI UI;
 
-    void Start()
-    {
-        ui = GameObject.Find("Canvas").GetComponent<GameUI>();
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -35,14 +30,14 @@ public class ItemSpawner : MonoBehaviour
                 //Instantiate(prefabs[0], hitInfo.point, Quaternion.identity);
                 if (hitInfo.collider.gameObject.layer != mask)
                 {
-                    if (ui.mainDropDown.value == 1)
+                    if (UI.mainDropDown.value == 1)
                     {
-                        if (ui.vacant == false)
-                            manager.CreateCreatures(hitInfo.point);
+                        if (UI.vacant == false)
+                            manager.CreateCreatures(hitInfo.point,manager.details,false, "Creature");
                     }
-                    if (ui.mainDropDown.value == 2)
+                    if (UI.mainDropDown.value == 2)
                     {
-                        if (ui.vacant2 == false)
+                        if (UI.vacant2 == false)
                             manager.CreatePlants(new Vector3(hitInfo.point.x,hitInfo.point.y - 0.3f,hitInfo.point.z));
                     }
                 }

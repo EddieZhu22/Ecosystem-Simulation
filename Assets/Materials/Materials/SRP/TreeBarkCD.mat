@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 4
+  version: 5
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TreeBarkCD
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _NORMALMAP
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -70,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7f4f7879a0ea5ea48ad0e1c9e82db454, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -117,6 +118,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AO_power: 0.13
     - _AO_power1: 0.8
@@ -166,7 +168,7 @@ Material:
     - _Base_Color: {r: 1, g: 1, b: 1, a: 0}
     - _Base_Color1: {r: 1, g: 1, b: 1, a: 0}
     - _Base_Color_Tint: {r: 0.8308824, g: 0.79015285, b: 0.7086938, a: 1}
-    - _Color: {r: 0.2342801, g: 0.9705882, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CustomColorHigh: {r: 0.58088225, g: 0.35406718, b: 0.25200036, a: 0}
     - _CustomColorLow: {r: 0.16911757, g: 0.10822836, b: 0.08082824, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

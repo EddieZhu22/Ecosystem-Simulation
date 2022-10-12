@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TreeDB : MonoBehaviour
 {
-    public GameObject[] TreeGameObjectDataBase = new GameObject[1000];
-    public float [,] genes = new float[1000,14];
+    public List<GameObject> TreeGameObjectDataBase;
+    public List<List<float>> genes = new List<List<float>>();
+
+    public List<float> gene;
     void Start()
     {
         
@@ -13,11 +15,11 @@ public class TreeDB : MonoBehaviour
 
     void Update()
     {
-        
+
     }
-    public void GenerateTree(GameObject tree, int index)
+    public void GenerateTree(GameObject tree)
     {
         GameObject treeObj = Instantiate(tree, transform.position, Quaternion.identity);
-        TreeGameObjectDataBase[index] = treeObj;
+        TreeGameObjectDataBase.Add(treeObj);
     }
 }

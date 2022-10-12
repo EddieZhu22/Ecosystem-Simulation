@@ -58,12 +58,12 @@ public class Seed : MonoBehaviour
     }
     private void CreateTree()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < database.GetComponent<TreeDB>().genes.Count; i++)
         {
             int num = 0;
             for (int k = 0; k < genes.Length; k++)
             {
-                if (database.GetComponent<TreeDB>().genes[i, k] == genes[k])
+                if (database.GetComponent<TreeDB>().genes[i][k] == genes[k])
                 {
                     num++;
                     //Debug.Log(num);
@@ -87,7 +87,7 @@ public class Seed : MonoBehaviour
         }
         if (match == false)
         {
-            for (int i = 0; i < database.GetComponent<TreeDB>().TreeGameObjectDataBase.Length; i++)
+            for (int i = 0; i < database.GetComponent<TreeDB>().TreeGameObjectDataBase.Count; i++)
             {
                 if (database.GetComponent<TreeDB>().TreeGameObjectDataBase[i] == null && placed == false)
                 {
@@ -102,10 +102,10 @@ public class Seed : MonoBehaviour
                     generator.gen2();
                     for (int k = 0; k < genes.Length; k++)
                     {
-                        database.GetComponent<TreeDB>().genes[i, k] = genes[k];
+                        database.GetComponent<TreeDB>().genes[i][k] = genes[k];
                     }
                     //database.TreeGameObjectDataBase[i] = generator.tree;
-                    database.GetComponent<TreeDB>().GenerateTree(generator.tree, i);
+                    database.GetComponent<TreeDB>().GenerateTree(generator.tree);
                     //database.TreeGameObjectDataBase = new GameObject[database.TreeGameObjectDataBase.Length + 1];
 
 

@@ -2,14 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ProceduralSky (Complete)-Mat
   m_Shader: {fileID: -6465566751694194690, guid: e0438acd8df0c4d3d998351a08fe3f21, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -123,16 +124,17 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - Vector1_2B9F6C48: 0
-    - Vector1_37AB74C7: 1
+    - Vector1_37AB74C7: 0.1
     - Vector1_3C4F0D5B: 0
-    - Vector1_3F10F121: 0.8
+    - Vector1_3F10F121: 1
     - Vector1_5B2CC6D2: 25
     - Vector1_5E285FC2: 0.022
     - Vector1_7296D65E: 7
-    - Vector1_74136097: 0.1
-    - Vector1_8309045E: 0.07
+    - Vector1_74136097: 0.01
+    - Vector1_8309045E: 0.059
     - Vector1_A0C5218E: 0.85
     - Vector1_AAD098B: 1
     - Vector1_AB063644: 20
@@ -161,6 +163,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -171,13 +174,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_22A48730: {r: 0.05490196, g: 0.0627451, b: 0.7490196, a: 0}
+    - Color_22A48730: {r: 0, g: 0.30056763, b: 1, a: 0}
     - Color_440E7706: {r: 0, g: 0, b: 0, a: 0}
     - Color_7519CB49: {r: 1.0580959, g: 1.7097702, b: 2.6390157, a: 1}
     - Color_7D4BC39B: {r: 0, g: 0, b: 0, a: 0}
     - Color_875AE1F7: {r: 0.009410375, g: 0.009623009, b: 0.105, a: 0}
     - Color_89D0409D: {r: 0, g: 0, b: 0, a: 0}
-    - Color_9087390A: {r: 2.484537, g: 1.7166535, b: 1.6945816, a: 0}
+    - Color_9087390A: {r: 1, g: 1, b: 1, a: 0}
     - Color_AA5052C7: {r: 0, g: 0, b: 0, a: 0}
     - Color_C5937B1C: {r: 0.00080099585, g: 0.00080099585, b: 0.01886791, a: 0}
     - Color_C9264062: {r: 0, g: 0.0018466444, b: 0.046, a: 0}
@@ -187,11 +190,11 @@ Material:
     - Vector2_E6D1CE59: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_E8D869EF: {r: 1, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _CloudsOffset: {r: 958547.56, g: -958547.56, b: 0, a: 0}
+    - _CloudsOffset: {r: 270771.47, g: -270771.47, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyColor2: {r: 0.75, g: 0.3, b: 0.17, a: 1}
-    - _SkyColorNight2: {r: 0.5944474, g: 0.65124786, b: 0.58647954, a: 1}
+    - _SkyColorNight2: {r: 0.49487513, g: 0.87608844, b: 0.8530763, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _StarsOffset: {r: 2, g: 0, b: 0, a: 0}
     - _starsOffset: {r: 2, g: 0, b: 0, a: 0}
@@ -208,4 +211,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
+  version: 5

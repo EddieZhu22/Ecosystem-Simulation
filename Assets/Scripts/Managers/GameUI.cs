@@ -87,15 +87,12 @@ public class GameUI : MonoBehaviour
         }
         if (spawned2 == true)
         {
-            if (num2 <= int.Parse(numOfAnimals.text))
+
+            for (int i = 0; i < int.Parse(numOfAnimals.text); i++)
             {
                 manager.SpawnAnimals();
-                num2++;
             }
-            else
-            {
-                spawned2 = false;
-            }
+            spawned2 = false;
         }
     }
 

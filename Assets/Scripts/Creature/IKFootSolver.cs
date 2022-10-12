@@ -61,12 +61,12 @@ public class IKFootSolver : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
 
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(newPosition, 0.5f);
-    }
+    }*/
 
 
 
