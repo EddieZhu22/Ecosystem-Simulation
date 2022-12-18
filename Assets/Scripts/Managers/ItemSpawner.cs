@@ -38,7 +38,7 @@ public class ItemSpawner : MonoBehaviour
                     if (UI.mainDropDown.value == 2)
                     {
                         if (UI.vacant2 == false)
-                            manager.CreatePlants(new Vector3(hitInfo.point.x,hitInfo.point.y - 0.3f,hitInfo.point.z));
+                            manager.CreatePlants(manager.details2,new Vector3(hitInfo.point.x,hitInfo.point.y - 0.3f,hitInfo.point.z),false);
                     }
                 }
             }

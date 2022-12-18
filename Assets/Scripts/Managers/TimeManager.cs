@@ -9,12 +9,14 @@ public class TimeManager : MonoBehaviour
     public float accuracy;
     void Start()
     {
-        
+        time = 6;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (time > 24)
+            time = 0;
+
         time += (Time.deltaTime) * 24 / 60;
         day += 1 * Time.deltaTime / (60);
     }

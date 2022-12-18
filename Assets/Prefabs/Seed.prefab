@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1132.0826, y: 6567.2744, z: -1428.3708}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,16 +58,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c411e3a32434ae448c68e82e9ae9a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  database: {fileID: 0}
   dormantTime: 1000
   p1: {fileID: 0}
   p2: {fileID: 0}
-  generator: {fileID: 0}
-  database: {fileID: 0}
-  canvas: {fileID: 0}
-  editor: {fileID: 0}
-  genes: []
+  genes:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   t: 0
   dd: 100
   type: 0
   match: 0
-  placed: 0

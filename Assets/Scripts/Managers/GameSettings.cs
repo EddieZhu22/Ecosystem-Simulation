@@ -9,4 +9,6 @@ public class GameSettings
     public int mode;
     public float waterHeight;
     public int CreatureLOD;
+
+    public int NumGenes;
 }

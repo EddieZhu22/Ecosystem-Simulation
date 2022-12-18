@@ -127,27 +127,27 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_2B9F6C48: 0
-    - Vector1_37AB74C7: 0.1
+    - Vector1_37AB74C7: 0.42
     - Vector1_3C4F0D5B: 0
-    - Vector1_3F10F121: 1
-    - Vector1_5B2CC6D2: 25
-    - Vector1_5E285FC2: 0.022
+    - Vector1_3F10F121: 0.829
+    - Vector1_5B2CC6D2: 28.72
+    - Vector1_5E285FC2: 0.0443
     - Vector1_7296D65E: 7
-    - Vector1_74136097: 0.01
-    - Vector1_8309045E: 0.059
-    - Vector1_A0C5218E: 0.85
+    - Vector1_74136097: 0.001
+    - Vector1_8309045E: 0.1
+    - Vector1_A0C5218E: 0.5
     - Vector1_AAD098B: 1
-    - Vector1_AB063644: 20
+    - Vector1_AB063644: 100
     - Vector1_C2E02346: 0
     - Vector1_CA1FCB44: 2.5
     - Vector1_D1A05D2: 0
     - Vector1_D35B54E7: 1
     - Vector1_D3B57A09: 0
-    - Vector1_DA053A00: 12.57
+    - Vector1_DA053A00: 1
     - Vector1_E0AD05F3: 0
     - Vector1_E1FFA1ED: 1
     - Vector1_E4937E8D: 1.81
-    - Vector1_EB026327: 20
+    - Vector1_EB026327: 100
     - Vector1_EC7A93E4: 5
     - Vector1_ECF7B58A: 4
     - Vector1_F44DFDF2: 0
@@ -183,18 +183,18 @@ Material:
     - Color_9087390A: {r: 1, g: 1, b: 1, a: 0}
     - Color_AA5052C7: {r: 0, g: 0, b: 0, a: 0}
     - Color_C5937B1C: {r: 0.00080099585, g: 0.00080099585, b: 0.01886791, a: 0}
-    - Color_C9264062: {r: 0, g: 0.0018466444, b: 0.046, a: 0}
+    - Color_C9264062: {r: 0, g: 0, b: 0, a: 0}
     - Color_F2830AA7: {r: 0, g: 0.29253232, b: 0.7095467, a: 1}
     - Vector2_56CD6A45: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_59ACCC5F: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_E6D1CE59: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_E8D869EF: {r: 1, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _CloudsOffset: {r: 270771.47, g: -270771.47, b: 0, a: 0}
+    - _CloudsOffset: {r: 9822.918, g: -9822.605, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyColor2: {r: 0.75, g: 0.3, b: 0.17, a: 1}
-    - _SkyColorNight2: {r: 0.49487513, g: 0.87608844, b: 0.8530763, a: 1}
+    - _SkyColorNight2: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _StarsOffset: {r: 2, g: 0, b: 0, a: 0}
     - _starsOffset: {r: 2, g: 0, b: 0, a: 0}

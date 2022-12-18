@@ -5,12 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameSettings settings;
-
     public TreeGenerator generator;
     public TreeDB database;
     public GameUI UI;
     public TimeManager tManager;
     public CreatureEditor cEditor;
+    public PlantEditor pEditor;
+    public PlantManager plantManager;
+
+
     public GameObject creaturePrefab, plantPrefab;//holds bot prefab
     public LayerMask rayLayer;
     public float timeframe, tick;
@@ -24,11 +27,12 @@ public class GameManager : MonoBehaviour
 
     [Range(0.1f, 10f)] public float Gamespeed = 1f;
 
-    public float[,] CreatureDetails = new float[9, 18];
+    public Dictionary<int,Dictionary<string,object>> CreatureDetails = new Dictionary<int,Dictionary<string,object>>();
 
     public float[,] PlantDetails = new float[9, 14];
 
-    public float[] details = new float[18], details2 = new float[14];
+    public Dictionary<string,object> details = new Dictionary<string, object>();
+    public List<float> details2;
 
 
     public LayerMask plantmask;
@@ -42,11 +46,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] prey, predator;
 
-    public PlantBehavior[] plants;
+    public Plant[] plants;
 
     void Start()
     {
         Gamespeed = 0.1f;
+        InitializeGame();
     }
 
     void Update()
@@ -151,36 +156,38 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    private void InitializeGame()
+    {
+        for(int i = 0; i < 9; i++)
+            CreatureDetails.Add(i,new Dictionary<string, object>());
+    }
     private Vector3 randomPlacement()
     {
         return new Vector3(Random.Range(-mapSize.x / 2, mapSize.x / 2), Random.Range(-mapSize.y / 2, mapSize.y / 2), Random.Range(-mapSize.z / 2, mapSize.z / 2)); 
     }
-    public void CreateCreatures(Vector3 pos, float[] genes, bool external, string CreatureName)
+    public void CreateCreatures(Vector3 pos, Dictionary<string,object> genes, bool external, string CreatureName)
     {
         if (external == false)
         {
-            for (int i = 0; i < 18; i++)
-            {
-               genes[i] = CreatureDetails[UI.selected, i];
-            }
+            genes = CreatureDetails[UI.selected];
         }
         GameObject creatureObj = Instantiate(creaturePrefab, pos, Quaternion.identity);
         creatureObj.name = CreatureName + " child";
         Creature creature = creatureObj.GetComponentInChildren<Creature>();
         //Set Creature Details
-        creature.stats.genes = genes;
+        creature.genes = creatureObj.GetComponentInChildren<CreatureGenes>();
+        creature.genes.Genes = genes;
         creature.Manager = GetComponent<GameManager>();
         creature.mutationChance = CreatureMutationChance;
         creature.mutationStrength = CreatureMutationStrength;
         creature.TimeManager = tManager;
         creature.editor = cEditor;
         creature.anim = creatureObj.GetComponent<CreatureProceduralAnimation>();
-        creature.SetDetails();
         creatures.Add(creature);
     }
     public void SpawnTrees()
     {
-        CreatePlants(randomPlacement());
+        //CreatePlants(details2,randomPlacement(),false);
     }
     public void SpawnAnimals()
     {
@@ -193,22 +200,21 @@ public class GameManager : MonoBehaviour
             //Debug.Log(hit.point);
         }
     }
-    public void CreatePlants(Vector3 pos)
+    public void CreatePlants(List<float> genes, Vector3 pos, bool fromSeed)
     {
         bool match = false;
-        Debug.Log(database);
-        if(database.genes.Count != 0)
+        if(database.genes.Count != 0 && fromSeed == false)
         {
             for (int i = 0; i < 14; i++)
             {
-                details2[i] = PlantDetails[UI.selected2, i];
+                genes[i] = PlantDetails[UI.selected2, i];
             }
             for (int i = 0; i < database.genes.Count; i++)
             {
                 int num = 0;
                 for (int k = 0; k < 14; k++)
                 {
-                    if (database.genes[i][k] == details2[k])
+                    if (database.genes[i][k] == genes[k])
                     {
                         num++;
                     }
@@ -217,9 +223,15 @@ public class GameManager : MonoBehaviour
                 {
                     GameObject tree = Instantiate(database.TreeGameObjectDataBase[i], pos, new Quaternion(0, 0, 0, 0));
                     PlantDetails details = tree.AddComponent<PlantDetails>();
+                    
+                    details.genes = genes.ToArray();
+                    Plant plant = tree.AddComponent<Plant>();
+                    plant.manager = GetComponent<GameManager>();
+                    plant.pManager = GetComponent<PlantManager>();
+                    plant.editor = pEditor;
 
-                    details.genes = details2;
-                    tree.AddComponent<PlantBehavior>();
+                    plant.generator = generator;
+
                     tree.AddComponent<MeshCollider>();
                     tree.tag = "food";
                     tree.layer = 3;
@@ -229,16 +241,16 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        if (match == false)
+        if (match == false || fromSeed == true)
         {
-            generator.seed = details2[4];
-            generator._recursionLevel = (int)details2[5];
-            generator._trunkThickness = details2[6];
-            generator._floorHeight = details2[7];
-            generator._firstBranchHeight = details2[8];
-            generator._twistiness = details2[9];
-            generator._branchDensity = details2[10];
-            generator._leavesSize = details2[11];
+            generator.seed = genes[4];
+            generator._recursionLevel = (int)genes[5];
+            generator._trunkThickness = genes[6];
+            generator._floorHeight = genes[7];
+            generator._firstBranchHeight = genes[8];
+            generator._twistiness = genes[9];
+            generator._branchDensity = genes[10];
+            generator._leavesSize = genes[11];
             generator.gen2();
 
             //Update Tree Object DataBase
@@ -246,18 +258,25 @@ public class GameManager : MonoBehaviour
 
             // Update gene database
             database.genes.Add(new List<float>());
-            for (int k = 0; k < details2.Length; k++)
+            for (int k = 0; k < genes.Count; k++)
             {
-                database.genes[database.genes.Count - 1].Add(details2[k]);
+                database.genes[database.genes.Count - 1].Add(genes[k]);
             }
 
             PlantDetails detail = generator.tree.AddComponent<PlantDetails>();
-            detail.genes = details2;
-            generator.tree.AddComponent<PlantBehavior>();
+            detail.genes = genes.ToArray();
+            Plant plant = generator.tree.AddComponent<Plant>();
+            plant.manager = GetComponent<GameManager>();
+            plant.editor = pEditor;
+            plant.generator = generator;
+            plant.pManager = GetComponent<PlantManager>();
+
+            generator.tree.AddComponent<BoxCollider>();
             //generator.tree.AddComponent<MeshCollider>();
             generator.tree.tag = "food";
             generator.tree.layer = 3;
             generator.tree.transform.position = pos;
         }
     }
+    
 }

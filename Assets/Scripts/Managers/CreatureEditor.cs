@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -23,42 +24,34 @@ public class CreatureEditor : MonoBehaviour
 
     [Header("Component Objects")]
     public GameObject[] LegComponents;
-    public GameObject[] Torsos;
+    public Transform Torso;
     public GameObject[] Heads;
-    public GameObject[] Necks;
     public GameObject[] Eyes;
     public GameObject[] Legs;
 
     [Header("Positions")]
     public Transform headHeight;
-    public Vector3[] HeadPos;
-    public Vector3[] TorsoScale;
-    public Vector3[] TorsoPos;
+    public Vector3 TorsoDimensions, HeadPosition;
 
     [Header("Weights")]
     public float[] LegWeights;
-    public float[] TorsoWeights;
     public float[] HeadWeights;
-    public float[] NeckWeights;
     public float[] EyeWeights;
     public float[] minSpeed;
     public float[] maxSpeed;
-    public float[] minStorage;
-    public float[] maxStorage;
-
+    public float storage;
     [Header("Text Strings/UI")]
     public string[] LegsTextStr;
-    public string[] TorsoTextStr;
     public string[] HeadsTextStr;
-    public string[] NeckTextStr;
-    public Slider legsSlider, eyesSlider, torsoHeightSlider, speedSlider, lookRadiusSlider, maxOffSpringSlider, sizeSlider, storageSlider, colorSlider, urgeSlider;
-    public TMP_Text LegsText, TorsoText, HeadsText, NeckText;
+    public InputField[] TorsoDimensionsText, HeadPositionText;
+    public Slider legsSlider, eyesSlider, torsoHeightSlider, speedSlider, lookRadiusSlider, maxOffSpringSlider, sizeSlider, colorSlider, urgeSlider;
+    public TMP_Text LegsText, HeadsText;
     public Text Speed, LookRadius, maxOffspring, Size, ReproductiveUrge, Storage;
     public InputField[] inputs;
     public Toggle predatorToggle;
 
     [HideInInspector]
-    public int legNum = 1, legprevnum, headNum = 1, headprevnum, neckNum = 1, neckprevnum, torsoNum = 1, torsoprevnum, predator, diet;
+    public int legNum = 1, legprevnum, headNum = 1, headprevnum, neckprevnum, predator, diet;
     [Header("Materials")]
     public Material mat;
     public GameObject Creature;
@@ -79,8 +72,6 @@ public class CreatureEditor : MonoBehaviour
         UI();
         SortLegs();
         SortHeads();
-        SortNecks();
-        SortTorso();
         SortNumEyes();
         SortNumLegs();
         SortTorsoHeight();
@@ -88,50 +79,53 @@ public class CreatureEditor : MonoBehaviour
     }
     public void SetDetails()
     {
-        manager.CreatureDetails[ui.selected, 0] = energyOutput;
-        manager.CreatureDetails[ui.selected, 1] = totalWeight;
-        manager.CreatureDetails[ui.selected, 2] = totalHeight;
+        manager.CreatureDetails[ui.selected].Clear();    
+        /*0*/manager.CreatureDetails[ui.selected].Add("energy", energyOutput);
+        /*1*/manager.CreatureDetails[ui.selected].Add("weight", totalWeight);
+        /*2*/manager.CreatureDetails[ui.selected].Add("height", totalHeight);
 
-        manager.CreatureDetails[ui.selected, 3] = speedSlider.value;
-        manager.CreatureDetails[ui.selected, 4] = lookRadiusSlider.value;
-        manager.CreatureDetails[ui.selected, 5] = maxOffSpringSlider.value;
-        manager.CreatureDetails[ui.selected, 6] = sizeSlider.value;
-        manager.CreatureDetails[ui.selected, 7] = colorSlider.value;
-        manager.CreatureDetails[ui.selected, 8] = storageSlider.value;
-        manager.CreatureDetails[ui.selected, 9] = urgeSlider.value;
+        /*3*/manager.CreatureDetails[ui.selected].Add("speed", speedSlider.value);
+        /*4*/manager.CreatureDetails[ui.selected].Add("look radius", lookRadiusSlider.value);
+        /*5*/manager.CreatureDetails[ui.selected].Add("max offspring", maxOffSpringSlider.value);
+        /*6*/manager.CreatureDetails[ui.selected].Add("size", sizeSlider.value);
+        /*6*/manager.CreatureDetails[ui.selected].Add("torso dimensions", TorsoDimensions);
+        /*6*/manager.CreatureDetails[ui.selected].Add("head position", HeadPosition);
+        /*7*/manager.CreatureDetails[ui.selected].Add("eye color", colorSlider.value);
+        /*8*/manager.CreatureDetails[ui.selected].Add("storage", storage);
+        /*9*/manager.CreatureDetails[ui.selected].Add("reproductive urge", urgeSlider.value);
 
-        manager.CreatureDetails[ui.selected, 10] = headNum;
-        manager.CreatureDetails[ui.selected, 11] = neckNum;
-        manager.CreatureDetails[ui.selected, 12] = legNum;
-        manager.CreatureDetails[ui.selected, 13] = legs;
-        manager.CreatureDetails[ui.selected, 14] = eyes;
-        manager.CreatureDetails[ui.selected, 15] = torsoHeight;
-        manager.CreatureDetails[ui.selected, 16] = predator;
-        manager.CreatureDetails[ui.selected, 17] = diet;
+        /*10*/manager.CreatureDetails[ui.selected].Add("head", headNum);
+        /*12*/manager.CreatureDetails[ui.selected].Add("leg", legNum);
+        /*13*/manager.CreatureDetails[ui.selected].Add("legs", legs);
+        /*14*/manager.CreatureDetails[ui.selected].Add("eyes", eyes);
+        /*15*/manager.CreatureDetails[ui.selected].Add("torso height", torsoHeight);
+        /*16*/manager.CreatureDetails[ui.selected].Add("is predator", predator);
+        /*17*/manager.CreatureDetails[ui.selected].Add("diet", diet);
     }
     void UI()
     {
+        Torso.localScale = new Vector3(TorsoDimensions.x,TorsoDimensions.y,TorsoDimensions.z);
+        TorsoDimensions = new Vector3(float.Parse(TorsoDimensionsText[0].text), float.Parse(TorsoDimensionsText[1].text), float.Parse(TorsoDimensionsText[2].text));
+        HeadPosition = new Vector3(float.Parse(HeadPositionText[0].text), float.Parse(HeadPositionText[1].text), float.Parse(HeadPositionText[2].text));
+
+        storage = TorsoDimensions.x * TorsoDimensions.y * TorsoDimensions.x * TorsoDimensions.z / 100; 
         HeadsText.text = HeadsTextStr[headNum - 1];
-        NeckText.text = NeckTextStr[neckNum - 1];
-        TorsoText.text = TorsoTextStr[torsoNum - 1];
         LegsText.text = LegsTextStr[legNum - 1];
         eyes = Mathf.RoundToInt(eyesSlider.value);
         legs = Mathf.RoundToInt(legsSlider.value);
         energyOutput = sizeSlider.value * (speedSlider.value + lookRadiusSlider.value);
         torsoHeight = torsoHeightSlider.value;
-        totalWeight = (LegWeights[legNum - 1] * legs + HeadWeights[headNum - 1] + EyeWeights[eyes - 1] + TorsoWeights[torsoNum - 1] + NeckWeights[neckNum - 1]) * sizeSlider.value + storageSlider.value;
+        totalWeight = (LegWeights[legNum - 1] * legs + HeadWeights[headNum - 1] + EyeWeights[eyes - 1]) * sizeSlider.value + storage;
         totalHeight = headHeight.position.y;
         speedSlider.minValue = minSpeed[legNum - 1] * legs / totalWeight;
         speedSlider.maxValue = maxSpeed[legNum - 1] * legs / totalWeight;
-        storageSlider.minValue = minStorage[torsoNum - 1];
-        storageSlider.maxValue = maxStorage[torsoNum - 1];
         lookRadiusSlider.minValue = (eyes * 4) - 2;
         lookRadiusSlider.maxValue = 4 * eyes + 1;
         maxOffSpringSlider.minValue = 2;
         maxOffSpringSlider.maxValue = Mathf.RoundToInt(totalWeight / 30);
         mat.color = new Color(0, Mathf.Abs(colorSlider.value), 0);
         Speed.text = "Speed: " + speedSlider.value;
-        Storage.text = "Storage: " + storageSlider.value;
+        Storage.text = "Storage: " + storage;
         LookRadius.text = "Look Distance: " + lookRadiusSlider.value;
         maxOffspring.text = "Maximum OffSpring: " + maxOffSpringSlider.value;
         Size.text = "Size: " + sizeSlider.value;
@@ -192,33 +186,10 @@ public class CreatureEditor : MonoBehaviour
         }
         for (int i = 0; i < Heads.Length; i++)
         {
-            Heads[i].transform.parent.localPosition = HeadPos[neckNum - 1];
+            Heads[i].transform.parent.localPosition = HeadPosition;
         }
     }
-    void SortTorso()
-    {
-        Torsos[0].transform.localScale = TorsoScale[torsoNum - 1];
-        Torsos[0].transform.localPosition = TorsoPos[torsoNum - 1];
-    }
-    void SortNecks()
-    {
-        if (neckprevnum != neckNum)
-        {
-            for (int i = 0; i < Necks.Length; i++)
-            {
-                if (Necks[i].tag == "Neck " + neckNum.ToString())
-                {
-                    Necks[i].SetActive(true);
-                }
-                else
-                {
-                    Necks[i].SetActive(false);
-                }
-            }
-            //done = true;
-            headprevnum = headNum;
-        }
-    }
+
     void SortNumEyes()
     {
         for (int i = 0; i < Eyes.Length; i++)
@@ -300,62 +271,6 @@ public class CreatureEditor : MonoBehaviour
             if (legNum - 1 > 0)
             {
                 legNum--;
-            }
-        }
-        catch
-        {
-
-        }
-    }
-    public void neckRButton()
-    {
-        try
-        {
-            if (neckNum < NeckTextStr.Length)
-            {
-                neckNum++;
-            }
-        }
-        catch
-        {
-
-        }
-    }
-    public void neckLButton()
-    {
-        try
-        {
-            if (neckNum - 1 > 0)
-            {
-                neckNum--;
-            }
-        }
-        catch
-        {
-
-        }
-    }
-    public void torsoRButton()
-    {
-        try
-        {
-            if (torsoNum < TorsoTextStr.Length)
-            {
-                torsoNum++;
-            }
-        }
-        catch
-        {
-
-        }
-    }
-    public void torsoLButton()
-    {
-        try
-        {
-            if (torsoNum - 1 > 0)
-            {
-                torsoNum--;
             }
         }
         catch
