@@ -75,13 +75,13 @@ public class TreeGenerator : MonoBehaviour
 
     void seedInp()
     {
-        _recursionLevel = Mathf.RoundToInt(_recursionLevel * Mathf.PerlinNoise(seed, seed));
+        /*_recursionLevel = Mathf.RoundToInt(_recursionLevel * Mathf.PerlinNoise(seed, seed));
         _trunkThickness = _trunkThickness * Mathf.PerlinNoise(seed, seed);
         _floorHeight = _floorHeight * Mathf.PerlinNoise(seed, seed);
         _firstBranchHeight = _firstBranchHeight * Mathf.PerlinNoise(seed, seed);
         _twistiness = _twistiness * Mathf.PerlinNoise(seed, seed);
         _branchDensity = _branchDensity * Mathf.PerlinNoise(seed, seed);
-        _leavesSize = _leavesSize * Mathf.PerlinNoise(seed, seed);
+        _leavesSize = _leavesSize * Mathf.PerlinNoise(seed, seed);*/
     }
 
     // Start is called before the first frame update
@@ -185,14 +185,8 @@ public class TreeGenerator : MonoBehaviour
     Vector3 getRandomVectorInCone(float coneAngularAmplitude, Vector3 direction)
     {
         //return (new Vector3(Random.Range(-coneAngularAmplitude, coneAngularAmplitude), Random.Range(-coneAngularAmplitude, coneAngularAmplitude), Random.Range(-coneAngularAmplitude, coneAngularAmplitude)) / 100f + direction).normalized;
-        return (new Vector3(coneAngularAmplitude * Mathf.PerlinNoise(seed, seed), coneAngularAmplitude * Mathf.PerlinNoise(seed, seed), coneAngularAmplitude * Mathf.PerlinNoise(seed, seed)) / 100f + direction).normalized;
+        return (new Vector3(coneAngularAmplitude, coneAngularAmplitude, coneAngularAmplitude) / 100f + direction).normalized;
 
-    }
-
-    bool Happens(float proba, int i)
-    {
-        //Debug.Log(Random.Range(0f, 1f));
-        return Mathf.PerlinNoise(seed + i * 100,seed + i * 100) < proba;
     }
 
     Mesh GenBranch(GameObject tree, int basePolygon, Vector3[] startVertices, Vector2[] startUv, float thickness, float floorHeight, int floorNumber, Vector3 startingPos, Vector3 startingDirection, float angularOffset, float distorsionCone, float roughness, float branchDensity, int recursionLevel)
@@ -253,12 +247,12 @@ public class TreeGenerator : MonoBehaviour
                 triangles[6 * ((i - 1) * basePolygon + j) + 4] = (i) * basePolygon + j;
                 triangles[6 * ((i - 1) * basePolygon + j) + 5] = (i) * basePolygon + (j + 1) % basePolygon;
             }
-            if (Happens(branchDensity, i) && recursionLevel > 0 && i >= floorNumber * _firstBranchHeight && basePolygon >= 4 && i < vertices.Length / basePolygon - 1) // split!
+            if (recursionLevel > 0 && i >= floorNumber * _firstBranchHeight && basePolygon >= 4 && i < vertices.Length / basePolygon - 1) // split!
             {
                 int subBasePolygon = Mathf.Max(Mathf.Max(2, basePolygon / 3), Mathf.Min(2 * basePolygon / 3, basePolygon - 1)) + 1;
                 int subBasePolygon2 = basePolygon - subBasePolygon + 2;
                 //Debug.Log(basePolygon * Mathf.PerlinNoise(seed, seed));
-                int newOffset = Mathf.RoundToInt(basePolygon * Mathf.PerlinNoise(seed, seed));
+                int newOffset = Mathf.RoundToInt(basePolygon);
                 Vector3[] subStartVertices = new Vector3[subBasePolygon];
                 Vector2[] subStartUv = new Vector2[subBasePolygon];
                 Vector3[] subStartVertices2 = new Vector3[subBasePolygon2];

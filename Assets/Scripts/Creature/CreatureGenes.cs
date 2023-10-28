@@ -4,6 +4,6 @@ using UnityEngine;
 using System;
 public class CreatureGenes: MonoBehaviour
 {
-    public Dictionary<string,object> Genes = new Dictionary<string, object>();
+    public Dictionary<string,float> Genes = new Dictionary<string, float>();
     public int gender;
 }

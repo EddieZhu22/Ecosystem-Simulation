@@ -234,19 +234,19 @@ public class DayNightCycle : MonoBehaviour
         switch (timeOfDay) {
             case TimeOfDay.Night:
                 if(onMidnight != null) onMidnight.Invoke();
-                Debug.Log("OnMidnight");
+                //Debug.Log("OnMidnight");
                 break;
             case TimeOfDay.Morning:
                 if(onMorning != null) onMorning.Invoke();
-                Debug.Log("OnMorning");
+                //Debug.Log("OnMorning");
                 break;
             case TimeOfDay.Noon:
                 if (onNoon != null) onNoon.Invoke();
-                Debug.Log("OnNoon");
+                //Debug.Log("OnNoon");
                 break;
             case TimeOfDay.Evening:
                 if(onEvening != null) onEvening.Invoke();
-                Debug.Log("OnEvening");
+                //Debug.Log("OnEvening");
                 break;
         }
     }

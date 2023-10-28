@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[ExecuteInEditMode]
 public class Water : MonoBehaviour
 {
     [SerializeField] private GameManager manager;
@@ -23,13 +25,13 @@ public class Water : MonoBehaviour
     }
     private Color waterColor(Vector2 initialColor)
     {
-        float colorValG = (( -((manager.tManager.time - 6) * (manager.tManager.time - 18))/75) + initialColor.x *yint* intensitymultiplier) ;
-        float colorValB = (( -((manager.tManager.time - 6) * (manager.tManager.time - 18))/75) + initialColor.y *yint* intensitymultiplier) ;
+        float colorValG = manager.Sun.GetComponent<Light>().intensity * initialColor.x;
+        float colorValB = manager.Sun.GetComponent<Light>().intensity * initialColor.y;
         if(manager.tManager.time < 6 || manager.tManager.time > 18)
         {
-            return new Color(0, yint * initialColor.x * intensitymultiplier, yint * initialColor.y * intensitymultiplier);
+        //    return new Color(0, yint * initialColor.x * intensitymultiplier, yint * initialColor.y * intensitymultiplier);
         }
-        return new Color(0, colorValG, colorValB );
+        return new Color(0, colorValG, colorValB,0.9f);
     }
     private float height() => manager.settings.waterHeight; 
 

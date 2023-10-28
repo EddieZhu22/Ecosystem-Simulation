@@ -2199,7 +2199,7 @@ GameObject:
   - component: {fileID: 1092003937135425674}
   - component: {fileID: 8578822731395773620}
   - component: {fileID: 6225832968295907950}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Torso 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2269,9 +2269,11 @@ MonoBehaviour:
   alive: 0
   age: 0
   genes: {fileID: 0}
-  colorManager: []
   editor: {fileID: 0}
   anim: {fileID: 0}
+  Manager: {fileID: 0}
+  TimeManager: {fileID: 0}
+  colorManager: []
   LegComponents:
   - {fileID: 2738740908716578886}
   - {fileID: 2738740910492052630}
@@ -2301,33 +2303,35 @@ MonoBehaviour:
   - {fileID: 2738740909085980727}
   Legs: []
   armatures: []
-  TimeManager: {fileID: 0}
   torsoBody: {fileID: 2738740908767321043}
+  prefab: {fileID: 0}
+  head: {fileID: 0}
   mutationStrength: 0
   mutationChance: 0
-  creatureLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   maxStorage: 0
   food: 0
   water: 0
   lookRad: 0
-  digestionDuration: 1000
-  t: 0
-  refractoryPeriod: 0
-  foundMate: 0
-  mated: 0
-  readyToMate: 0
   attack: 0
   def: 0
   maxDef: 0
-  Manager: {fileID: 0}
-  prefab: {fileID: 0}
-  head: {fileID: 0}
+  foundMate: 0
+  mated: 0
+  readyToMate: 0
+  digestionDuration: 1000
+  t: 0
+  refractoryPeriod: 0
+  chromosome: []
+  creatureLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   target: {fileID: 0}
   mate: {fileID: 0}
   coll: []
   mateColl: []
+  rayLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2738740908772708373
 GameObject:
   m_ObjectHideFlags: 0
@@ -5287,7 +5291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2738740909484618896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 188.26572, y: 12, z: 235.89337}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
@@ -5298,7 +5302,7 @@ Transform:
   - {fileID: 2738740909949791026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2738740909484618898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9341,7 +9345,7 @@ GameObject:
   - component: {fileID: 2298809312651432817}
   - component: {fileID: 8358243986357810783}
   - component: {fileID: 1778406073636665674}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

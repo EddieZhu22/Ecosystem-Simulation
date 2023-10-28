@@ -5,7 +5,7 @@ using System.IO;
 
 public class Data : MonoBehaviour
 {
-    string filename = "";
+   /* string filename = "";
     private string[] DataStr;
     [SerializeField] private int i, k;
     private readonly PlayerPrefs iVal;
@@ -66,9 +66,9 @@ public class Data : MonoBehaviour
             {
 
                 list.stats[0].Time = Time.time;
-                list.stats[0].CreaturesTotal = manager.creatures.Count;
+                list.stats[0].CreaturesTotal = (float) (manager.dManager.currentPredatorCount + manager.dManager.currentHerbivoreCount);
                 list.stats[0].CreaturesPrey = manager.prey.Length;
-                list.stats[0].CreaturesPredators = manager.creatures.Count - manager.prey.Length;
+                list.stats[0].CreaturesPredators = (float) (manager.dManager.currentPredatorCount);
                 list.stats[0].Trees = manager.plants.Length;
 
                 list.stats[0].speed[0] = manager.averages1[3];
@@ -141,6 +141,6 @@ public class Data : MonoBehaviour
         yield return new WaitForSeconds(1 / Time.timeScale);
 
         StartCoroutine(waitForSeconds());
-    }
+    }*/
 
 }

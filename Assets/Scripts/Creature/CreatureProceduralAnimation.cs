@@ -67,21 +67,29 @@ public class CreatureProceduralAnimation : MonoBehaviour
 
         Torso.position = new Vector3(Torso.position.x, averagePos, Torso.position.z);
     }
-    public void SetPosition(Transform obj, Vector3 toPos, Vector3 fromPos)
+    public void SetPosition(Transform obj, Vector3 toPos, Vector3 fromPos, int ver, float size)
     {
         float y = toPos.y - fromPos.y; // delta y
         float x = toPos.x - fromPos.x; // delta x
         float r = Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(y, 2)); // Calculate Total Distance Using Pythagorean Thereom
 
-        obj.localScale = new Vector3(1f, r*10f, 1f);
+        float creatureScale = ver == 0 ? obj.parent.parent.localScale.x: obj.parent.localScale.x; // Assuming uniform scaling of creature
+
+        obj.localScale = new Vector3(1f / (creatureScale * size), (r * 10f) / (creatureScale * size), 1f / (creatureScale * size));
+
         Vector3 m = new Vector3((toPos.x + fromPos.x) / 2, (toPos.y + fromPos.y) / 2, obj.position.z);
         obj.position = m;
-        if(x != 0)
+
+        if (x != 0)
         {
-           //print((Mathf.Atan(y / x) * 180 / Mathf.PI));
             obj.localEulerAngles = new Vector3(0, 0, (Mathf.Atan(y / x) * 180 / Mathf.PI) + 90);
         }
     }
+
+
+
+
+
     public void Set()
     {
         if (transform.parent != null)
@@ -107,7 +115,7 @@ public class CreatureProceduralAnimation : MonoBehaviour
         }
         if (_iseditor == true)
         {
-            SetPosition(Neck.transform,Head.transform.position,NeckPosition.position);
+            SetPosition(Neck.transform,Head.transform.position,NeckPosition.position,0,20);
             genes = GetComponent<CreatureGenes>();
             genes.Genes.Clear();
             genes.Genes.Add("legs", 2);

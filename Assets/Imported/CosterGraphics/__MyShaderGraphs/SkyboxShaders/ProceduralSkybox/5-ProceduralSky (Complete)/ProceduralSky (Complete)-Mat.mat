@@ -12,7 +12,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -129,15 +129,15 @@ Material:
     - Vector1_2B9F6C48: 0
     - Vector1_37AB74C7: 0.42
     - Vector1_3C4F0D5B: 0
-    - Vector1_3F10F121: 0.829
-    - Vector1_5B2CC6D2: 28.72
-    - Vector1_5E285FC2: 0.0443
-    - Vector1_7296D65E: 7
-    - Vector1_74136097: 0.001
-    - Vector1_8309045E: 0.1
-    - Vector1_A0C5218E: 0.5
+    - Vector1_3F10F121: 0.804
+    - Vector1_5B2CC6D2: 30.54
+    - Vector1_5E285FC2: 0.021
+    - Vector1_7296D65E: 2
+    - Vector1_74136097: 1.82
+    - Vector1_8309045E: 0.0475
+    - Vector1_A0C5218E: 0.1
     - Vector1_AAD098B: 1
-    - Vector1_AB063644: 100
+    - Vector1_AB063644: 1
     - Vector1_C2E02346: 0
     - Vector1_CA1FCB44: 2.5
     - Vector1_D1A05D2: 0
@@ -147,9 +147,9 @@ Material:
     - Vector1_E0AD05F3: 0
     - Vector1_E1FFA1ED: 1
     - Vector1_E4937E8D: 1.81
-    - Vector1_EB026327: 100
-    - Vector1_EC7A93E4: 5
-    - Vector1_ECF7B58A: 4
+    - Vector1_EB026327: 1
+    - Vector1_EC7A93E4: 0.1
+    - Vector1_ECF7B58A: 7
     - Vector1_F44DFDF2: 0
     - _AlphaClip: 0
     - _Blend: 0
@@ -174,23 +174,23 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_22A48730: {r: 0, g: 0.30056763, b: 1, a: 0}
+    - Color_22A48730: {r: 0.18431371, g: 0.58540994, b: 1, a: 0}
     - Color_440E7706: {r: 0, g: 0, b: 0, a: 0}
     - Color_7519CB49: {r: 1.0580959, g: 1.7097702, b: 2.6390157, a: 1}
     - Color_7D4BC39B: {r: 0, g: 0, b: 0, a: 0}
-    - Color_875AE1F7: {r: 0.009410375, g: 0.009623009, b: 0.105, a: 0}
+    - Color_875AE1F7: {r: 0.010768958, g: 0.06736834, b: 0.20754719, a: 0}
     - Color_89D0409D: {r: 0, g: 0, b: 0, a: 0}
     - Color_9087390A: {r: 1, g: 1, b: 1, a: 0}
     - Color_AA5052C7: {r: 0, g: 0, b: 0, a: 0}
     - Color_C5937B1C: {r: 0.00080099585, g: 0.00080099585, b: 0.01886791, a: 0}
-    - Color_C9264062: {r: 0, g: 0, b: 0, a: 0}
+    - Color_C9264062: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
     - Color_F2830AA7: {r: 0, g: 0.29253232, b: 0.7095467, a: 1}
     - Vector2_56CD6A45: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_59ACCC5F: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_E6D1CE59: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_E8D869EF: {r: 1, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _CloudsOffset: {r: 9822.918, g: -9822.605, b: 0, a: 0}
+    - _CloudsOffset: {r: 323220.22, g: -323220.22, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyColor2: {r: 0.75, g: 0.3, b: 0.17, a: 1}

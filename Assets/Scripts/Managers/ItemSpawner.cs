@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
+using UnityEngine.EventSystems;  // Add this namespace
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -12,52 +15,111 @@ public class ItemSpawner : MonoBehaviour
 
     public float tick;
 
-    public LayerMask mask;
+    public LayerMask mask, groundMask;
 
     public GameManager manager;
 
     [SerializeField] private GameUI UI;
 
+    public GameObject cannotSpawn;
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0))
+            {
+                try
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity))
-            {
-                //Debug.Log(hitInfo.point);
-                //Instantiate(prefabs[0], hitInfo.point, Quaternion.identity);
-                if (hitInfo.collider.gameObject.layer != mask)
-                {
-                    if (UI.mainDropDown.value == 1)
+                    if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity))
                     {
-                        if (UI.vacant == false)
-                            manager.CreateCreatures(hitInfo.point,manager.details,false, "Creature");
-                    }
-                    if (UI.mainDropDown.value == 2)
-                    {
-                        if (UI.vacant2 == false)
-                            manager.CreatePlants(manager.details2,new Vector3(hitInfo.point.x,hitInfo.point.y - 0.3f,hitInfo.point.z),false);
+                        if (hitInfo.collider.gameObject.layer != mask)
+                        {
+                            // Check if the terrain is not water or steep
+                            
+                                if (UI.Page == GameUI.PageView.Creature)
+                                {
+                                    if (hitInfo.point.y > manager.settings.waterHeight && !IsSteepTerrain(hitInfo))
+                                    {
+                                        if (UI.vacant == false)
+                                        {
+                                            manager.CreateCreatures(hitInfo.point, manager.details, false, "Creature", 0);
+                                            UI.globalUISound.PlaySound2();
+
+                                        }
+                                    }
+                                    else if (UI.vacant == false)
+                                    {
+
+                                        if (IsSteepTerrain(hitInfo))
+                                        {
+                                            cannotSpawn.SetActive(true);
+                                            cannotSpawn.GetComponent<Text>().text = "Cannot Spawn (too steep)!";
+                                            StartCoroutine(SetActiveCantSpawn());
+                                        }
+                                    }
+
+
+                                }
+                                if (UI.Page == GameUI.PageView.Plants)
+                                {
+                                    if (hitInfo.point.y > manager.settings.waterHeight && !IsSteepTerrain(hitInfo))
+                                    {
+                                        if (UI.vacant2 == false)
+                                        {
+                                            manager.CreatePlants(manager.details2, new Vector3(hitInfo.point.x, hitInfo.point.y - 0.3f, hitInfo.point.z), false, 0);
+                                            UI.globalUISound.PlaySound2();
+                                        }
+                                    }
+                                    else if (UI.vacant2 == false)
+                                    {
+
+                                        if (IsSteepTerrain(hitInfo))
+                                        {
+                                            cannotSpawn.SetActive(true);
+                                            cannotSpawn.GetComponent<Text>().text = "Cannot Spawn (too steep)!";
+                                            StartCoroutine(SetActiveCantSpawn());
+                                        }
+                                    }
+                                }
+
+                            }
+                        
+
                     }
                 }
-            }
-            /*
-            if (Physics.Raycast(ray, out RaycastHit hitpt, Mathf.Infinity))
-            {
-                Debug.Log(hitInfo.transform.gameObject.layer);
-                //Instantiate(prefabs[0], hitInfo.point, Quaternion.identity);
-                if (Input.mousePosition.x < 740)
+                catch
                 {
-                    if(hitpt.transform.gameObject.tag != "")
-                    {
-                        ui.scene = 3;
-                        Camera.main.GetComponent<FreeLookCam>().target = hitpt.transform;
-                    }
+                    // Log the exception for debugging
+                    //Debug.LogError("An error occurred: " + e.Message);
                 }
             }
-            */
+        }
+    }
+    IEnumerator SetActiveCantSpawn()
+    {
+        cannotSpawn.SetActive(true);
+        Vector2 mousePosition = Input.mousePosition;
+
+
+        cannotSpawn.GetComponent<Text>().rectTransform.position = mousePosition;
+        yield return new WaitForSeconds(0.25f);
+        cannotSpawn.SetActive(false);
+    }
+    public static bool IsSteepTerrain(RaycastHit hitInfo)
+    {
+        // Check the slope of the terrain
+        if(hitInfo.collider.gameObject.layer == 7)
+        {
+            float slopeAngle = Vector3.Angle(Vector3.up, hitInfo.normal);
+            return slopeAngle > 45f; // Adjust 45 to the maximum slope angle your creature can handle
+        }
+        else
+        {
+            return false;
         }
 
-    }
+    }   
 }
